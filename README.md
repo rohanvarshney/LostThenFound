@@ -5,11 +5,11 @@ Created by team 0317.
 
 Rohan Varshney - has access!
 
-Emily Hodges - has access
+Emily Hodges
 
-AJ Joshi
+AJ Joshi - has access!
 
-Ski Ingurgio
+Ski Ingurgio - has access!
 
-Dagm Behailu - has access!
+Dagm Behailu
 
