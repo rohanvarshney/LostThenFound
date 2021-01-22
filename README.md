@@ -9,7 +9,7 @@ Emily Hodges
 
 AJ Joshi
 
-Ski Ingurgio - has access!
+Ski Ingurgio
 
-Dagm Behailu
+Dagm Behailu - has access!
 
