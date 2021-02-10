@@ -28,6 +28,66 @@
   color: #61dafb;
 }
 
+.link {
+  color: blue;
+  text-decoration: none;
+  font-weight: bold;
+  padding-left: 100px;
+}
+
+.post {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+  position: relative;
+  width: 280px;
+  height: 387px;
+  display: inline-block;
+  margin-right: 10%;
+  margin-bottom: 5%;
+  vertical-align: top;
+}
+
+
+.details {
+  color: #1293e6;
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: 15%;
+}
+
+.petInfo {
+  display: inline-block;
+  font-size: 15px;
+  margin-bottom: 5px;
+
+}
+
+.postImg {
+  width: 280px;
+  height: 170px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.container {
+  margin-left: 12%;
+}
+
+.speciesName {
+  font-weight: bold;
+  padding: 30px;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin: 0;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
