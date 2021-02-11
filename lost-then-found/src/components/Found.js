@@ -7,6 +7,7 @@ const Found = (props) => {
             imgSrc={item.imgSrc}
             title={item.title}
             time={item.time}
+            date={item.date}
             location={item.location}
             description={item.description}
         />

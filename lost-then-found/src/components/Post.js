@@ -11,21 +11,21 @@ const Post = (props) => {
           <div class="animalInfo">
             <p><b>{props.title}</b></p>
             <span class="petInfo">
-              <img class="icon" src="images/animal_icon.jpg" />
+              <img class="icon" src="images/clock.png" />
               {props.time}
             </span>
             <br></br>
            <span class="petInfo">
-             <img class="icon" src="images/needle_icon.jpg" />
+             <img class="icon" src="images/date.png" />
              {props.date}
           </span> 
           <br></br>
           <span class="petInfo">
-            <img class="icon" src="images/info_icon.jpg" />
+            <img class="icon" src="images/location.png" />
             {props.location}
           </span>
-          <br></br><br></br>
-            <Link class="details" to={props.description}>View more details ↓</Link>
+          <br></br>
+            <Link class="details" to={props.description}>+</Link>
           </div>
         </div>
       );

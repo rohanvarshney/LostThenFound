@@ -7,6 +7,7 @@ const Lost = (props) => {
         <Post
             imgSrc={item.imgSrc}
             title={item.title}
+            date={item.date}
             time={item.time}
             location={item.location}
             description={item.description}
