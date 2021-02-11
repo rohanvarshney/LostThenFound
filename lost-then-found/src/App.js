@@ -151,7 +151,11 @@ function App() {
             setData={setData}/> }
             exact
             />
-            <Route path="/Found" component={Found}/>
+            <Route path="/Found" render={() => <Found
+            itemData={itemData}
+            setData={setData}/> }
+            exact
+            />
             <Route path="/Matches" component={Matches}/>
             <Route path="/" component={Home}/>
           </Switch>

@@ -1,10 +1,24 @@
 import React from 'react';
+import Post from "./Post";
 
-const Found = () => {
+const Found = (props) => {
+    const posts = props.itemData[1].items.map((item, idx) => (
+        <Post
+            imgSrc={item.imgSrc}
+            title={item.title}
+            time={item.time}
+            location={item.location}
+            description={item.description}
+        />
+    ));
+
+    
     return (
-        <>
-        <h1>FOUND PAGE</h1>
-        </>
+        <div>
+      <div class="container">
+        <div class="flex-container">{posts}</div>
+      </div>
+    </div>
 
     );
 }
