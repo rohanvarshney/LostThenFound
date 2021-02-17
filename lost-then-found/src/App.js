@@ -145,20 +145,22 @@ function App() {
       <Router>
       <div>
         <Nav />
-          <Switch>
-            <Route path="/Lost" render={() => <Lost
-            itemData={itemData}
-            setData={setData}/> }
-            exact
-            />
-            <Route path="/Found" render={() => <Found
-            itemData={itemData}
-            setData={setData}/> }
-            exact
-            />
-            <Route path="/Matches" component={Matches}/>
-            <Route path="/" component={Home}/>
-          </Switch>
+          <div class="tabs">
+            <Switch>
+              <Route path="/Lost" render={() => <Lost
+              itemData={itemData}
+              setData={setData}/> }
+              exact
+              />
+              <Route path="/Found" render={() => <Found
+              itemData={itemData}
+              setData={setData}/> }
+              exact
+              />
+              <Route path="/Matches" component={Matches}/>
+              <Route path="/" component={Home}/>
+            </Switch>
+          </div>
       </div>
 
     </Router>

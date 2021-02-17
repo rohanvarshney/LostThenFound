@@ -4,7 +4,6 @@ import {NavLink} from "react-router-dom";
   const Nav = () => {
     return (
           <div class="nav">
-              <NavLink className="logo" to ="/">LTF</NavLink>
               <div class="links">
               <NavLink className="link" to ="/Lost">Lost Items</NavLink>
               <NavLink className="link" to ="/Found">Found Items</NavLink>
