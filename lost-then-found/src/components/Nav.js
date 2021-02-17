@@ -4,12 +4,12 @@ import {NavLink} from "react-router-dom";
   const Nav = () => {
     return (
           <div class="nav">
-              <div class="links">
-              <NavLink className="link" to ="/Lost">Lost Items</NavLink>
-              <NavLink className="link" to ="/Found">Found Items</NavLink>
-              <NavLink className="link" to ="/Matches">Matches</NavLink>
+             
+              <NavLink className="link" to ="/Lost"><button className="navButton">Lost Items</button></NavLink>
+              <NavLink className="link" to ="/Found"><button className="navButton">Found Items</button></NavLink>
+              <NavLink className="link" to ="/Matches"><button className="navButton">Matches</button></NavLink>
               <NavLink className="link" to ="/">Home</NavLink>
-              </div>
+             
           </div>
     );
   };
