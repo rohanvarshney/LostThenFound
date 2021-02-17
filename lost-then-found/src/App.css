@@ -23,7 +23,25 @@
   border: 3px solid black;
   overflow-y: scroll;
   padding: 20px;
+  background-color: #F5F5F5;
 }
+
+.searchBar{
+  margin-left: 14%;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  width: 53%;
+  height: 40px;
+  margin-right: 2%;
+}
+
+#newPost {
+  background-color: darkgrey;
+  color: white;
+  width: 110px;
+  height: 40px;
+}
+
 
 .nav {
   margin-left: 10%;
@@ -71,7 +89,7 @@
   border-radius: 10px;
   position: relative;
   width: 180px;
-  height: 270px;
+  height: 250px;
   display: inline-block;
   margin-right: 10%;
   margin-bottom: 5%;

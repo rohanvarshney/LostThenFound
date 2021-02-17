@@ -24,8 +24,6 @@ const Post = (props) => {
             <img class="icon" src="images/location.png" />
             {props.location}
           </span>
-          <br></br>
-            <Link class="details" to={props.description}>+</Link>
           </div>
         </div>
       );

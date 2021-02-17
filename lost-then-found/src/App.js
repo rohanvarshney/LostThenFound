@@ -146,20 +146,24 @@ function App() {
       <div>
         <Nav />
           <div class="tabs">
-            <Switch>
-              <Route path="/Lost" render={() => <Lost
-              itemData={itemData}
-              setData={setData}/> }
-              exact
-              />
-              <Route path="/Found" render={() => <Found
-              itemData={itemData}
-              setData={setData}/> }
-              exact
-              />
-              <Route path="/Matches" component={Matches}/>
-              <Route path="/" component={Home}/>
-            </Switch>
+            <span id="searchPost">
+              <input type="text" placeholder="Search by keyword..." class="searchBar"></input>
+              <button type="button" id="newPost">New Post</button>
+            </span>
+              <Switch>
+                <Route path="/Lost" render={() => <Lost
+                itemData={itemData}
+                setData={setData}/> }
+                exact
+                />
+                <Route path="/Found" render={() => <Found
+                itemData={itemData}
+                setData={setData}/> }
+                exact
+                />
+                <Route path="/Matches" component={Matches}/>
+                <Route path="/" component={Home}/>
+              </Switch>
           </div>
       </div>
 
