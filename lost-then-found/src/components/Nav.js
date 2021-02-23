@@ -7,17 +7,11 @@ import Popup from "./Popup";
     //const [itemState, setState] = React.useState('Lost');
 
     let state = 'Lost';
-    const setState = (d) => {
-      state = d;
-    }
+    /*const setState = (d) => {
+      //state = d;
+      console.log("LINK: " + d.props.match.url);
+    }*/
 
-    // state management for New Post popup box
-    const [visible, setVisible] = useState(false); // default set to hidden
-
-    // handler for toggling state of new post button
-    const togglePopup = () => {
-      setVisible(!visible);
-    };
 
 
 
@@ -25,20 +19,11 @@ import Popup from "./Popup";
     return (
           <div class="nav">
              
-              <NavLink className="link" to ="/Lost"><button className="navButton" onClick={setState('Lost')}>Lost Items</button></NavLink>
-              <NavLink className="link" to ="/Found"><button className="navButton" onClick={setState('Found')}>Found Items</button></NavLink>
+              <NavLink className="link" to ="/Lost"><button className="navButton" onClick={console.log("lost")}>Lost Items</button></NavLink>
+              <NavLink className="link" to ="/Found"><button className="navButton" onClick={console.log("found")}>Found Items</button></NavLink>
               <NavLink className="link" to ="/Matches"><button className="navButton">Matches</button></NavLink>
               <NavLink className="link" to ="/">Home</NavLink>
 
-              <span id="searchPost">
-                <input type="text" placeholder="Search by keyword..." class="searchBar"></input>
-                <button type="button" id="newPost" onClick={togglePopup}>New Post</button>
-              </span>
-
-              {visible && <Popup 
-                itemState={state}
-                handleClose={togglePopup}
-              />}
               
              
           </div>
