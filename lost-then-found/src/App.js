@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   BrowserRouter as Router,
@@ -13,6 +13,7 @@ import Lost from "./components/Lost";
 import Found from "./components/Found";
 import Matches from "./components/Matches";
 import Nav from "./components/Nav";
+import Popup from "./components/Popup";
 
 function App() {
 
@@ -138,18 +139,24 @@ function App() {
       }
     ]);
 
+    
 
 
+
+    /*let [isLost, setLost] = React.useState(true);
+
+    setLost = (d) => {
+      isLost = d;
+    } */
+
+  
 
     return (
       <Router>
       <div>
         <Nav />
           <div class="tabs">
-            <span id="searchPost">
-              <input type="text" placeholder="Search by keyword..." class="searchBar"></input>
-              <button type="button" id="newPost">New Post</button>
-            </span>
+            
               <Switch>
                 <Route path="/Lost" render={() => <Lost
                 itemData={itemData}
@@ -164,6 +171,8 @@ function App() {
                 <Route path="/Matches" component={Matches}/>
                 <Route path="/" component={Home}/>
               </Switch>
+
+              
           </div>
       </div>
 
