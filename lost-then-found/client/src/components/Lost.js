@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Post from "./Post";
+import Popup from "./Popup";
 
 const Lost = (props) => {
 
@@ -14,11 +15,31 @@ const Lost = (props) => {
         />
     ));
 
+    // state management for New Post popup box
+    const [visible, setVisible] = useState(false); // default set to hidden
+
+    // handler for toggling state of new post button
+    const togglePopup = (d) => {
+      setVisible(!visible);
+    };
+
     
     return (
         <div>
       <div class="container">
-        <div class="flex-container">{posts}</div>
+        <div class="flex-container">
+          <span id="searchPost">
+              <input type="text" placeholder="Search by keyword..." class="searchBar"></input>
+              <button type="button" id="newPost" onClick={togglePopup}>New Post</button>
+          </span>
+
+          {posts}
+
+          {visible && <Popup 
+            itemState={'Lost'}
+            handleClose={togglePopup}
+          />}
+        </div>
       </div>
     </div>
 

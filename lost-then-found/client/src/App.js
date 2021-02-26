@@ -195,10 +195,7 @@ function App() {
     <div>
       <Nav />
         <div class="tabs">
-          <span id="searchPost">
-            <input type="text" placeholder="Search by keyword..." class="searchBar"></input>
-            <button type="button" id="newPost">New Post</button>
-          </span>
+          
             <Switch>
               <Route path="/Lost" render={() => <Lost
               itemData={itemData}
