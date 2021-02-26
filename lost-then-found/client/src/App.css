@@ -20,17 +20,16 @@
   margin-bottom: 10%;
   
   height: 600px;
-  border: 3px solid black;
+  /* border: 3px solid black; */
   overflow-y: scroll;
   padding: 20px;
   background-color: #F5F5F5;
 }
 
 .searchBar{
-  margin-left: 14%;
   margin-bottom: 20px;
   margin-top: 30px;
-  width: 53%;
+  width: 60%;
   height: 40px;
   margin-right: 2%;
 }
@@ -43,6 +42,38 @@
   border-radius: 12px;
 }
 
+#addPost {
+  margin-top: 20px;
+  margin-left: 45%;
+  font-size: 25px;
+  width: 120px;
+  height: 60px;
+  font-weight: bold;
+  background: #1293e6;
+  color: white;
+  border: 0px;
+  border-radius: 10px;
+}
+
+#homeIntro {
+  text-align: center;
+}
+
+#homeIntro h3 {
+  animation: fadeIn ease 5s;
+  -webkit-animation: fadeIn ease 5s;
+}
+
+#homeIntro li {
+  animation: fadeIn ease 7s;
+  -webkit-animation: fadeIn ease 7s;
+  font-size: large;
+}
+
+#homeNav {
+  position: absolute;
+  bottom: 0;
+}
 
 .nav {
   margin-left: 10%;
@@ -56,15 +87,18 @@
   width: 120px;
   padding-left: 5px;
   display: inline-block;
-  border: solid 3px black;
+  /* border: solid 3px black; */
+  border:  #DCDCDC;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: 10px;
+  border-radius: 10px;
   transition-duration: 0.4s;
-  background-color: #DCDCDC;
+  background-color: #FFFFFF;
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 
 .navButton:hover {
-  background-color: #B0C4DE;
+  background-color: #F26419;
   color: white;
 
 }
@@ -110,6 +144,7 @@
   display: inline-block;
   font-size: 15px;
   margin-bottom: 2px;
+  margin-left: 5px;
 
 }
 
@@ -130,6 +165,8 @@
 .icon {
   width: 25px;
   height: 25px;
+  margin-left: 10px;
+  margin-right: 5px;
 }
 
 .container {
@@ -150,6 +187,52 @@
   margin-top: 0px;
 }
 
+.animalInfo p {
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* New Post dialogue box */
+.popup-box {
+  position: fixed;
+  background: #00000050;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+ 
+.box {
+  position: relative;
+  width: 50%;
+  margin: 0 auto;
+  height: auto;
+  max-height: 70vh;
+  margin-top: calc(100vh - 85vh - 20px);
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  border: 3px solid #F26419;
+  overflow: auto;
+}
+ 
+.close-icon {
+  content: 'x';
+  cursor: pointer;
+  position: fixed;
+  right: calc(26% - 30px);
+  top: calc(100vh - 85vh - 33px);
+  background: #ededed;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  line-height: 20px;
+  text-align: center;
+  border: 1px solid #999;
+  font-size: 20px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -158,3 +241,28 @@
     transform: rotate(360deg);
   }
 }
+
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
+  
+  @-moz-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
+  
+  @-webkit-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
+  
+  @-o-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
+  
+  @-ms-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
