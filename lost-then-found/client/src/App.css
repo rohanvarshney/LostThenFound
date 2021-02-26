@@ -20,7 +20,7 @@
   margin-bottom: 10%;
   
   height: 600px;
-  border: 3px solid black;
+  /* border: 3px solid black; */
   overflow-y: scroll;
   padding: 20px;
   background-color: #F5F5F5;
@@ -42,6 +42,25 @@
   border-radius: 12px;
 }
 
+#homeIntro {
+  text-align: center;
+}
+
+#homeIntro h3 {
+  animation: fadeIn ease 5s;
+  -webkit-animation: fadeIn ease 5s;
+}
+
+#homeIntro li {
+  animation: fadeIn ease 7s;
+  -webkit-animation: fadeIn ease 7s;
+  font-size: large;
+}
+
+#homeNav {
+  position: absolute;
+  bottom: 0;
+}
 
 .nav {
   margin-left: 10%;
@@ -55,15 +74,18 @@
   width: 120px;
   padding-left: 5px;
   display: inline-block;
-  border: solid 3px black;
+  /* border: solid 3px black; */
+  border:  #DCDCDC;
   margin-left: auto;
-  margin-right: auto;
+  margin-right: 10px;
+  border-radius: 10px;
   transition-duration: 0.4s;
-  background-color: #DCDCDC;
+  background-color: #FFFFFF;
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 
 .navButton:hover {
-  background-color: #B0C4DE;
+  background-color: #F26419;
   color: white;
 
 }
@@ -109,6 +131,7 @@
   display: inline-block;
   font-size: 15px;
   margin-bottom: 2px;
+  margin-left: 5px;
 
 }
 
@@ -129,6 +152,8 @@
 .icon {
   width: 25px;
   height: 25px;
+  margin-left: 10px;
+  margin-right: 5px;
 }
 
 .container {
@@ -147,6 +172,12 @@
   margin-left: 5px;
   margin-right: 5px;
   margin-top: 0px;
+}
+
+.animalInfo p {
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 /* New Post dialogue box */
@@ -197,3 +228,28 @@
     transform: rotate(360deg);
   }
 }
+
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
+  
+  @-moz-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
+  
+  @-webkit-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
+  
+  @-o-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
+  
+  @-ms-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
