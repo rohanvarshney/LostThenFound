@@ -4,7 +4,6 @@ const router = express.Router();
 // Post Model
 const Post = require('../../Model/Post');
 
-
 // @route GET api/posts
 // gets posts in descending order (by date)
 router.get('/', (req, res) => {
