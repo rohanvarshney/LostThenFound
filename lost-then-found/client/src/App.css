@@ -42,6 +42,19 @@
   border-radius: 12px;
 }
 
+#addPost {
+  margin-top: 20px;
+  margin-left: 45%;
+  font-size: 25px;
+  width: 120px;
+  height: 60px;
+  font-weight: bold;
+  background: #1293e6;
+  color: white;
+  border: 0px;
+  border-radius: 10px;
+}
+
 #homeIntro {
   text-align: center;
 }
@@ -192,15 +205,15 @@
  
 .box {
   position: relative;
-  width: 70%;
+  width: 50%;
   margin: 0 auto;
   height: auto;
   max-height: 70vh;
   margin-top: calc(100vh - 85vh - 20px);
-  background: #fff;
-  border-radius: 4px;
-  padding: 20px;
-  border: 1px solid #999;
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  border: 3px solid #F26419;
   overflow: auto;
 }
  
@@ -208,11 +221,11 @@
   content: 'x';
   cursor: pointer;
   position: fixed;
-  right: calc(15% - 30px);
+  right: calc(26% - 30px);
   top: calc(100vh - 85vh - 33px);
   background: #ededed;
-  width: 25px;
-  height: 25px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   line-height: 20px;
   text-align: center;

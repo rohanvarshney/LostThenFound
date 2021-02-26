@@ -36,7 +36,8 @@ const Lost = (props) => {
           {posts}
 
           {visible && <Popup 
-            itemState={'Lost'}
+            itemState={'New Lost Item'}
+            location={'Last Seen'}
             handleClose={togglePopup}
           />}
         </div>

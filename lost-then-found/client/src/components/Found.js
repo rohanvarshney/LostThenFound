@@ -35,7 +35,8 @@ const Found = (props) => {
           {posts}
 
           {visible && <Popup 
-            itemState={'Found'}
+            itemState={'New Found Item'}
+            location={'Location Found'}
             handleClose={togglePopup}
           />}
         </div>
