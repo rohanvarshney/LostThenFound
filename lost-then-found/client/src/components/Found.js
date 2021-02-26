@@ -25,11 +25,12 @@ const Found = (props) => {
     return (
         <div>
       <div class="container">
-        <div class="flex-container">
-          <span id="searchPost">
+      <div id="searchPost">
             <input type="text" placeholder="Search by keyword..." class="searchBar"></input>
             <button type="button" id="newPost" onClick={togglePopup}>New Post</button>
-          </span>
+          </div>
+        <div class="flex-container">
+          
 
           {posts}
 

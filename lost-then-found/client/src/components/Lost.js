@@ -27,11 +27,11 @@ const Lost = (props) => {
     return (
         <div>
       <div class="container">
+        <div id="searchPost">
+          <input type="text" placeholder="Search by keyword..." class="searchBar"></input>
+          <button type="button" id="newPost" onClick={togglePopup}>New Post</button>
+          </div>
         <div class="flex-container">
-          <span id="searchPost">
-              <input type="text" placeholder="Search by keyword..." class="searchBar"></input>
-              <button type="button" id="newPost" onClick={togglePopup}>New Post</button>
-          </span>
 
           {posts}
 
