@@ -37,6 +37,9 @@ const Found = (props) => {
           {visible && <Popup 
             itemState={'New Found Item'}
             location={'Location Found'}
+            timeLabel={'Approximate time found'}
+            dateLabel={'Date found'}
+            locationLabel={'Location found'}
             handleClose={togglePopup}
           />}
         </div>

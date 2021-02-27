@@ -11,31 +11,33 @@ const Popup = (props) => {
             <div className="box">
                 <span className="close-icon" onClick={props.handleClose}>x</span>
                 <h1>{props.itemState}</h1>
-                <div>
-                    <InputGroup size="lg">
-                        <InputGroupAddon addonType="prepend">Title</InputGroupAddon>
-                        <Input />
-                    </InputGroup>
-                    <br />
-                    <InputGroup>
-                        <InputGroupAddon addonType="prepend">Time</InputGroupAddon>
-                        <Input />
-                    </InputGroup>
-                    <br />
-                    <InputGroup>
-                        <InputGroupAddon addonType="prepend">Date</InputGroupAddon>
-                        <Input />
-                    </InputGroup>
-                    <br />
-                    <InputGroup>
-                        <InputGroupAddon addonType="prepend">{props.location}</InputGroupAddon>
-                        <Input />
-                    </InputGroup>
-                    <br />
-                    <InputGroup>
-                        <InputGroupAddon addonType="prepend">Tags</InputGroupAddon>
-                        <Input />
-                    </InputGroup>
+                <div class="inputHolder">
+                    <input type="text" placeholder="Title" className="postInput"></input> <br></br>
+                   
+                    <span className="postInputWrap">
+                        <label for="time" classsName="inputLabel">{props.timeLabel}:</label>
+                        <input type="time" id="time" name="time" className="postInput2"></input> 
+                    </span><br></br>
+
+                    <label for="itemDate">{props.dateLabel}:</label>
+                        <input type="date" id="itemDate" name="itemDate" className="postInput2"></input> <br></br>
+                        
+                        <label for="loc">{props.locationLabel}:</label>
+                            <input list="locations" name="loc" id="loc" className="postInput2" id="locInput"></input>
+                            <datalist id="locations">
+                                <option value="Clough Undergraduate Learning Commons"></option>
+                                <option value="Klaus College of Computing"></option>
+                                <option value="Student Center"></option>
+                                <option value="Howey Physics Building"></option>
+                                <option value="CRC"></option>
+                            </datalist> <br></br>
+
+                        <label for="img">Select image:</label>
+                            <input type="file" id="img" name="img" accept="image/*" className="postInput2" id="imgInput"></input> <br></br>
+
+                            <input type="text" placeholder="Item Description" className="postInput" id="descriptionInput"></input> <br></br>
+
+                        <input type="text" placeholder="Tags: e.g. blue, waterbottle" className="postInput"></input> <br></br>
 
                     <button type="button" id="addPost">Post</button>
                  </div>

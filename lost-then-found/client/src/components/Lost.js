@@ -38,6 +38,9 @@ const Lost = (props) => {
           {visible && <Popup 
             itemState={'New Lost Item'}
             location={'Last Seen'}
+            timeLabel={'Approximate time lost'}
+            dateLabel={'Date lost'}
+            locationLabel={'Location lost'}
             handleClose={togglePopup}
           />}
         </div>
