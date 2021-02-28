@@ -3,7 +3,21 @@ import { InputGroup, InputGroupText, InputGroupAddon, Input } from 'reactstrap';
 
 const Popup = (props) => {
 
+
+    const [title, setTitle] = useState('');
+    const [dateLost, setDateLost] = useState('0000-01-01');
+    const [locationLost, setLocationLost] = useState('0000-01-01');
+    const [imageSrc, setImgSrc] = useState('');
+    const [description, setDescription] = useState('');
+    const [tagList, setTagList] = useState('');
+
     //const [isLost, setLost] = useState("lost")
+    function handlePostButtonClick(e) {
+        e.preventDefault();
+        console.log('The link was clicked.');
+        console.log("Title:" + title);
+        // Do onChange event for other fields as needed
+    }
 
 
     return (
@@ -12,7 +26,7 @@ const Popup = (props) => {
                 <span className="close-icon" onClick={props.handleClose}>x</span>
                 <h1>{props.itemState}</h1>
                 <div class="inputHolder">
-                    <input type="text" placeholder="Title" className="postInput"></input> <br></br>
+                    <input onChange={event => setTitle(event.target.value)} type="text" placeholder="Title" className="postInput"></input> <br></br>
                    
                     <span className="postInputWrap">
                         <label for="time" classsName="inputLabel">{props.timeLabel}:</label>
@@ -39,7 +53,7 @@ const Popup = (props) => {
 
                         <input type="text" placeholder="Tags: e.g. blue, waterbottle" className="postInput"></input> <br></br>
 
-                    <button type="button" id="addPost">Post</button>
+                    <button type="button" id="addPost" onClick={handlePostButtonClick}>Post</button>
                  </div>
             </div>
         </div>
