@@ -3,13 +3,18 @@ import Post from "components/Post";
 
 const PostHolder = (props) => {
 
+    function Clicked() {
+        consosle.log("CLICKED");
+    }
+
     const posts = props.items.map((item, idx) => (
-        <Post
+        <Post 
             imgSrc={item.imgSrc}
             title={item.title}
             time={item.time}
             location={item.location}
             description={item.description}
+            clickHandle={Clicked}
         />
     )
 
