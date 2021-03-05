@@ -8,19 +8,19 @@ const Details = (props) => {
                 <span className="close-icon" id="detailsClose" onClick={props.handleClose}>x</span>
                 <img class="detailImg" src={props.imgSrc} alt='something'/>
 
-                <div id="detailInfo">
+                <div id="detailPostInfo">
                     <h1>{props.title}</h1>
-                    <span class="petInfo">
+                    <span class="detailItemInfo">
                         <img class="icon" src="images/clock.png" />
                         {props.time}
                     </span>
                     <br></br>
-                    <span class="petInfo">
+                    <span class="detailItemInfo">
                         <img class="icon" src="images/date.png" />
                         {props.date}
                     </span> 
                     <br></br>
-                    <span class="petInfo">
+                    <span class="detailItemInfo">
                         <img class="icon" src="images/location.png" />
                         {props.location}
                     </span>

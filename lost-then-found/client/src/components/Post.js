@@ -18,19 +18,19 @@ const Post = (props) => {
             src={props.imgSrc} 
             alt='something'
           />
-          <div class="animalInfo">
+          <div class="postInfo">
             <p><b>{props.title}</b></p>
-            <span class="petInfo">
+            <span class="itemInfo">
               <img class="icon" src="images/clock.png" />
               {props.time}
             </span>
             <br></br>
-           <span class="petInfo">
+           <span class="itemInfo">
              <img class="icon" src="images/date.png" />
              {props.date}
           </span> 
           <br></br>
-          <span class="petInfo">
+          <span class="itemInfo">
             <img class="icon" src="images/location.png" />
             {props.location}
           </span>

@@ -1,3 +1,4 @@
+/* FULL APP */
 .App {
   text-align: center;
 }
@@ -13,68 +14,24 @@
   }
 }
 
-.tabs {
-  display: block;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-bottom: 10%;
-  
-  height: 600px;
-  /* border: 3px solid black; */
-  overflow-y: scroll;
-  padding: 20px;
-  background-color: #F5F5F5;
-}
-
-.searchBar{
-  margin-bottom: 20px;
-  margin-top: 30px;
-  width: 60%;
-  height: 40px;
-  margin-right: 2%;
-}
-
-#newPost {
-  background-color: darkgrey;
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
   color: white;
-  width: 110px;
-  height: 40px;
-  border-radius: 12px;
 }
 
-#addPost {
-  margin-top: 20px;
-  margin-left: 35%;
-  font-size: 25px;
-  width: 120px;
-  height: 60px;
-  font-weight: bold;
-  background: #1293e6;
-  color: white;
-  border: 0px;
-  border-radius: 10px;
+.App-link {
+  color: #61dafb;
 }
 
-#homeIntro {
-  text-align: center;
-}
 
-#homeIntro h3 {
-  animation: fadeIn ease 5s;
-  -webkit-animation: fadeIn ease 5s;
-}
 
-#homeIntro li {
-  animation: fadeIn ease 7s;
-  -webkit-animation: fadeIn ease 7s;
-  font-size: large;
-}
-
-#homeNav {
-  position: absolute;
-  bottom: 0;
-}
-
+/* NAV BAR */
 .nav {
   margin-left: 10%;
   margin-top: 50px;
@@ -100,25 +57,83 @@
 .navButton:hover {
   background-color: #F26419;
   color: white;
-
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+
+
+/* PAGE HOLDER */
+.tabs {
+  display: block;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 10%;
+  
+  height: 600px;
+  /* border: 3px solid black; */
+  overflow-y: scroll;
+  padding: 20px;
+  background-color: #F5F5F5;
+}
+
+
+
+/* HOME PAGE */
+#homeIntro {
+  text-align: center;
+}
+
+#homeIntro h3 {
+  animation: fadeIn ease 5s;
+  -webkit-animation: fadeIn ease 5s;
+}
+
+#homeIntro li {
+  animation: fadeIn ease 7s;
+  -webkit-animation: fadeIn ease 7s;
+  font-size: large;
+}
+
+#homeNav {
+  position: absolute;
+  bottom: 0;
+}
+
+
+
+/* LOST & FOUND PAGES */
+.searchBar{
+  margin-bottom: 20px;
+  margin-top: 30px;
+  width: 60%;
+  height: 40px;
+  margin-right: 2%;
+}
+
+#newPost {
+  background-color: darkgrey;
+  stroke: darkgrey;
   color: white;
+  width: 110px;
+  height: 40px;
+  border-radius: 12px;
 }
 
-.App-link {
-  color: #61dafb;
+#addPost {
+  margin-top: 20px;
+  margin-left: 35%;
+  font-size: 25px;
+  width: 120px;
+  height: 60px;
+  font-weight: bold;
+  background: #1293e6;
+  color: white;
+  border: 0px;
+  border-radius: 10px;
 }
 
 
+
+/* POST CARD */
 .post {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 10px;
@@ -131,16 +146,7 @@
   vertical-align: top;
 }
 
-
-.details {
-  color: #1293e6;
-  font-weight: bold;
-  text-decoration: none;
-  margin-left: 45%;
-  font-size: 30px;
-}
-
-.petInfo {
+.itemInfo {
   display: inline-block;
   font-size: 15px;
   margin-bottom: 2px;
@@ -153,47 +159,45 @@
   height: 100px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  object-fit: cover;
 }
 
-.flex-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-}
-
-.icon {
-  width: 25px;
-  height: 25px;
-  margin-left: 10px;
-  margin-right: 5px;
-}
-
-.container {
-  margin-left: 12%;
-}
-
-.speciesName {
-  font-weight: bold;
-  padding-left: 0px;
-  padding-right: 0px;
-  margin: 0;
-}
-
-.animalInfo {
+.postInfo {
   margin-bottom: 0px;
   margin-left: 5px;
   margin-right: 5px;
   margin-top: 0px;
 }
 
-.animalInfo p {
+.postInfo p {
+  font-size: 8;
   margin-left: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-/* New Post dialogue box */
+.icon {
+  width: 15px;
+  height: 15px;
+  margin-left: 10px;
+  margin-right: 5px;
+  margin-bottom: 2px;
+}
+
+
+
+/* POST POP UP */
+/* #detailItemInfo {
+
+}
+
+.detailPostInfo { */
+/* 
+} */
+
+
+
+/* POP UPS */
 .popup-box {
   position: fixed;
   background: #00000050;
@@ -201,8 +205,9 @@
   height: 100vh;
   top: 0;
   left: 0;
+  z-index:999;
 }
- 
+
 .box {
   position: relative;
   width: 40%;
@@ -215,7 +220,11 @@
   border: 3px solid #F26419;
   overflow: auto;
 }
- 
+
+.detailImg {
+  object-fit: cover;
+}
+
 .close-icon {
   content: 'x';
   cursor: pointer;
@@ -270,6 +279,33 @@
   border: 0px;
   width: 70%;
 }
+
+
+
+/* UNSORTED */
+.details {
+  color: #1293e6;
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: 45%;
+  font-size: 30px;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+
+
+.container {
+  margin-left: 12%;
+}
+
+
+/* KEYFRAMES / ANIMATION */
 
 @keyframes App-logo-spin {
   from {
