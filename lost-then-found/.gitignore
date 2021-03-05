@@ -21,3 +21,10 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# fixes for continuous babel cache creations
+node_modules
+build
+npm-debug.log
+.env
+.DS_Store
