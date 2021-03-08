@@ -194,6 +194,10 @@ function App() {
     <Router>
     <div>
       <Nav />
+        <div class="login">
+          <p> Login | Settings </p>
+        </div>
+        
         <div class="tabs">
           
             <Switch>
@@ -210,6 +214,9 @@ function App() {
               <Route path="/Matches" component={Matches}/>
               <Route path="/" component={Home}/>
             </Switch>
+        </div>
+        <div class="footer">
+          <p>About | Community Guidelines | Help </p>
         </div>
     </div>
     </Router>

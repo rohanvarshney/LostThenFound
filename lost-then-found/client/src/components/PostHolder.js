@@ -22,7 +22,6 @@ const PostHolder = (props) => {
     return (
         <div>
         <div class="container">
-            {/* <h1 class="speciesName">{type}</h1> */}
             <div class="flex-container">{posts}</div>
         </div>
     </div>

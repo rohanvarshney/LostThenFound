@@ -19,7 +19,7 @@ const Post = (props) => {
             alt='something'
           />
           <div class="postInfo">
-            <p><b>{props.title}</b></p>
+            <p class="postTitle"><b>{props.title}</b></p>
             <span class="itemInfo">
               <img class="icon" src="images/clock.png" />
               {props.time}
