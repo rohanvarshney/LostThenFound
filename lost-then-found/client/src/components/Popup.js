@@ -27,15 +27,15 @@ const Popup = (props) => {
                 <h1>{props.itemState}</h1>
                 <div class="inputHolder">
                     <input onChange={event => setTitle(event.target.value)} type="text" placeholder="Title" className="postInput"></input> <br></br>
-                   
+
                     <span className="postInputWrap">
                         <label for="time" classsName="inputLabel">{props.timeLabel}:</label>
-                        <input type="time" id="time" name="time" className="postInput2"></input> 
+                        <input type="time" id="time" name="time" className="postInput2"></input>
                     </span><br></br>
 
                     <label for="itemDate">{props.dateLabel}:</label>
                         <input type="date" id="itemDate" name="itemDate" className="postInput2"></input> <br></br>
-                        
+
                         <label for="loc">{props.locationLabel}:</label>
                             <input list="locations" name="loc" id="loc" className="postInput2" id="locInput"></input>
                             <datalist id="locations">
