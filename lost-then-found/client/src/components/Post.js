@@ -42,6 +42,7 @@ const Post = (props) => {
             time={props.time}
             date={props.date}
             location={props.location}
+            description={props.description}
             handleClose={togglePopup}
           />}
 

@@ -45,7 +45,7 @@ function App() {
             time: '3:00 pm',
             date: '01/27/2021',
             location: 'CULC',
-            decription: "I lost this on the 4th floor.",
+            description: "I lost this on the 4th floor.",
             found: false,
           },
           { 
@@ -54,7 +54,7 @@ function App() {
             time: '8:00 pm',
             date: '01/22/2021',
             location: 'CULC',
-            decription: "It has CRC stickers on it.",
+            description: "It has CRC stickers on it.",
             found: false,
           },
           { 
@@ -63,7 +63,7 @@ function App() {
             time: '1:00 pm',
             date: '02/23/2021',
             location: 'Crosland Tower',
-            decription: "SRN: 382739827. Should have users Mary and Guest. Please return ASAP!",
+            description: "SRN: 382739827. Should have users Mary and Guest. Please return ASAP!",
             found: false,
           },
           { 
@@ -72,7 +72,7 @@ function App() {
             time: '8:20 pm',
             date: '01/13/2021',
             location: 'Tech Green',
-            decription: "I left it as went to get water and came back and it was gone.",
+            description: "I left it as went to get water and came back and it was gone.",
             found: false,
           },
           { 
@@ -81,7 +81,7 @@ function App() {
             time: '3:00 pm',
             date: '02/16/2021',
             location: 'CULC 144',
-            decription: "Forgot after class, should be engraved with name 'Jeanie'.",
+            description: "Forgot after class, should be engraved with name 'Jeanie'.",
             found: false,
           },
           { 
@@ -90,7 +90,7 @@ function App() {
             time: '10:00 am',
             date: '01/29/2021',
             location: 'Exhibition Hall',
-            decription: "Left outside Twisted Taco.",
+            description: "Left outside Twisted Taco.",
             found: false,
           }
         ]
@@ -104,7 +104,7 @@ function App() {
             time: '4:00 pm',
             date: '01/27/2021',
             location: 'Klaus',
-            decription: "Statics textbook, should have Ethan written on front page.",
+            description: "Statics textbook, should have Ethan written on front page.",
             found: true,
           },
           { 
@@ -113,7 +113,7 @@ function App() {
             time: '2:30 pm',
             date: '02/23/2021',
             location: 'Crosland',
-            decription: "I think it belongs to a Mary?",
+            description: "I think it belongs to a Mary?",
             found: false,
           },
           { 
@@ -122,7 +122,7 @@ function App() {
             time: '4:00 pm',
             date: '02/26/2021',
             location: 'Klaus',
-            decription: "Studying and left behind on 3rd floor table.",
+            description: "Studying and left behind on 3rd floor table.",
             found: true,
           },
           { 
@@ -131,7 +131,7 @@ function App() {
             time: '4:00 pm',
             date: '02/02/2021',
             location: 'MRDC',
-            decription: "Left outside of Invention Studio.",
+            description: "Left outside of Invention Studio.",
             found: true,
           }
         ]

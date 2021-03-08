@@ -24,6 +24,11 @@ const Details = (props) => {
                             <img class="icon" src="images/location.png" />
                             {props.location}
                         </span>
+                        <br></br>
+                        <br></br>
+                        <span class="detailItemInfo" id = "detailItemDescription">
+                            <p>{props.description}</p>
+                        </span>
                     </div>
 
                     <div id="contactButtons">
