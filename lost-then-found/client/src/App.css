@@ -226,6 +226,7 @@
 .dropdown {
   position: absolute;
   background-color: white;
+  padding: 5px;
   top: 100%;
   left: 0;
   width: 300px;

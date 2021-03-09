@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Post from "./Post";
 import Popup from "./Popup";
+import Filter from "./Filter";
 
 const Found = (props) => {
   const originalPosts = props.itemData[1].items.map((item, idx) => (
@@ -28,6 +29,12 @@ const Found = (props) => {
     // state management for New Post popup box
     const [visible, setVisible] = useState(false); // default set to hidden
     const [searchText, setSearchText] = useState('');
+    const [filterOpen, setFilterOpen] = useState(false);
+
+    // handler for toggling filter popup
+    const toggleFilter = (d) => {
+      setFilterOpen(!filterOpen);
+    }
 
     // handler for toggling state of new post button
     const togglePopup = (d) => {
@@ -70,14 +77,16 @@ const Found = (props) => {
     }
 
     return (
-        <div>
+      <div>
       <div class="container">
-      <div id="searchPost">
-            <input onChange={event => setSearchText(event.target.value)} type="text" placeholder="Search by keyword..." class="searchBar"></input>
-            <span>
-              <button type="button" id="search" onClick={handleSearchButtonClick}>Search</button>
-              <button type="button" id="newPost" onClick={togglePopup}>New Post</button>
-            </span>
+        <div id="searchPost">
+          <input onChange={event => setSearchText(event.target.value)} type="text" placeholder="Search by keyword..." class="searchBar"></input>
+          <button type="button" id="search" onClick={handleSearchButtonClick}>Search</button>
+          <div className="filter-container">
+            <button type="button" id="filter" onClick={toggleFilter}>Filter</button>
+            {filterOpen && <Filter></Filter>}
+          </div>
+          <button type="button" id="newPost" onClick={togglePopup}>New Post</button>
           </div>
         <div class="flex-container">
 
