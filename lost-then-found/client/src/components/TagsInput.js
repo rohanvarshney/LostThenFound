@@ -15,14 +15,6 @@ const TagsInput = () => {
 
     return (
         <div className="tags-input">
-            <ul>
-            {tags.map((tag, index) => (
-                <li key={index}>
-                    <span>{tag}</span>
-                <i className="material-icons" onClick={() => removeTags(index)}>close</i>
-                </li>
-                ))}
-            </ul>
 
             <label for="loc">Locations:</label>
             <input 
@@ -41,6 +33,15 @@ const TagsInput = () => {
                     <option value="Howey Physics Building"></option>
                     <option value="CRC"></option>
                 </datalist> <br></br>
+
+                <ul>
+            {tags.map((tag, index) => (
+                <li key={index}>
+                    <span>{tag}</span>
+                <i className="material-icons" onClick={() => removeTags(index)}>close</i>
+                </li>
+                ))}
+            </ul>
         </div>
     );
 

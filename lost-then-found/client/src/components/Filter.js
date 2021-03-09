@@ -17,9 +17,7 @@ const Filter = () => {
                     
             <br></br>
 
-            <div id="locationList">
-
-            </div>
+            <button type="button" id="applyFilter">Apply</button>
                 
         </div>
 
