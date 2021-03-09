@@ -1,5 +1,5 @@
 import React from 'react';
-import Popup from "./TagsInput";
+import TagsInput from "./TagsInput";
 
 const Filter = () => {
 
