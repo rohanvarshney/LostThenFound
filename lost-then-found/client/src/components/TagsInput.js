@@ -23,11 +23,24 @@ const TagsInput = () => {
                 </li>
                 ))}
             </ul>
-            <input
-                type="text"
+
+            <label for="loc">Locations:</label>
+            <input 
+                list="locations" 
+                name="loc" 
+                id="loc" 
+                className="postInput2" 
+                id="locInput"
                 onKeyUp={event => addTags(event)}
                 placeholder="Press enter to add tags"
-            />
+                ></input>
+                <datalist id="locations">
+                    <option value="Clough Undergraduate Learning Commons"></option>
+                    <option value="Klaus College of Computing"></option>
+                    <option value="Student Center"></option>
+                    <option value="Howey Physics Building"></option>
+                    <option value="CRC"></option>
+                </datalist> <br></br>
         </div>
     );
 
