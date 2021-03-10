@@ -1,13 +1,16 @@
 import React from "react";
-const TagsInput = () => {
+const TagsInput = (props) => {
     const [tags, setTags] = React.useState([]);
+
     const addTags = event => {
         if (event.key === "Enter" && event.target.value !== "") {
             setTags([...tags, event.target.value]);
+            props.passTagsList(tags);
+            // TODO: Off by one error, last item in tags not passed to Filter.
             event.target.value = "";
         }
     };
-    
+
     const removeTags = index => {
         setTags([...tags.filter(tag => tags.indexOf(tag) !== index)]);
     };
@@ -17,11 +20,11 @@ const TagsInput = () => {
         <div className="tags-input">
 
             <label for="loc">Locations:</label>
-            <input 
-                list="locations" 
-                name="loc" 
-                id="loc" 
-                className="postInput2" 
+            <input
+                list="locations"
+                name="loc"
+                id="loc"
+                className="postInput2"
                 id="locInput"
                 onKeyUp={event => addTags(event)}
                 placeholder="Press enter to add tags"
@@ -38,7 +41,7 @@ const TagsInput = () => {
             {tags.map((tag, index) => (
                 <li key={index}>
                     <span>{tag}</span>
-                <i className="material-icons" onClick={() => removeTags(index)}>close</i>
+                <i className="material-icons" onClick={() => removeTags(index)}></i>
                 </li>
                 ))}
             </ul>
@@ -46,5 +49,4 @@ const TagsInput = () => {
     );
 
 };
-
 export default TagsInput;

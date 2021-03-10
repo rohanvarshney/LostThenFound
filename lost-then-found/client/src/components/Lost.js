@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Post from "./Post";
 import Popup from "./Popup";
 import Filter from "./Filter";
@@ -32,6 +32,10 @@ const Lost = (props) => {
     const [searchText, setSearchText] = useState('');
     const [filterOpen, setFilterOpen] = useState(false);
 
+    const [filterDate, setFilterDate] = useState();
+    const [filterTime, setFilterTime] = useState();
+    const [tagsList, setTagsList] = useState([]);
+
     // handler for toggling filter popup
     const toggleFilter = (d) => {
       setFilterOpen(!filterOpen);
@@ -55,6 +59,7 @@ const Lost = (props) => {
         e.preventDefault();
         console.log('The search button was clicked.');
         console.log("Search Bar Text:" + searchText);
+        console.log("Filter Params: " + filterDate + ", " + filterTime + ", " + tagsList);
 
         // Do onChange event for other fields as needed
         const allItems = originalPosts;
@@ -86,7 +91,7 @@ const Lost = (props) => {
           <button type="button" id="search" onClick={handleSearchButtonClick}>Search</button>
           <div className="filter-container">
             <button type="button" id="filter" onClick={toggleFilter}>Filter</button>
-            {filterOpen && <Filter></Filter>}
+            {filterOpen && <Filter passFilterDate={setFilterDate} passFilterTime={setFilterTime} passTagsList={setTagsList} />}
           </div>
           <button type="button" id="newPost" onClick={togglePopup}>New Post</button>
           </div>

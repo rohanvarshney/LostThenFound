@@ -5,8 +5,9 @@ const Popup = (props) => {
 
 
     const [title, setTitle] = useState('');
-    const [dateLost, setDateLost] = useState('0000-01-01');
-    const [locationLost, setLocationLost] = useState('0000-01-01');
+    const [timeLost, setTimeLost] = useState('');
+    const [dateLost, setDateLost] = useState('');
+    const [locationLost, setLocationLost] = useState('');
     const [imageSrc, setImgSrc] = useState('');
     const [description, setDescription] = useState('');
     const [tagList, setTagList] = useState('');
@@ -16,7 +17,15 @@ const Popup = (props) => {
         e.preventDefault();
         console.log('The link was clicked.');
         console.log("Title:" + title);
+        console.log("Time Lost:" + timeLost);
+        console.log("Date Lost:" + dateLost);
+        console.log("Location Lost:" + locationLost);
+        console.log("Img Src: " + imageSrc);
+        console.log("Description: " + description);
+        console.log("Tag List:" + tagList);
         // Do onChange event for other fields as needed
+
+        //TODO: Make object to pass into Express API call to post item.
     }
 
 
@@ -30,14 +39,14 @@ const Popup = (props) => {
 
                     <span className="postInputWrap">
                         <label for="time" classsName="inputLabel">{props.timeLabel}:</label>
-                        <input type="time" id="time" name="time" className="postInput2"></input>
+                        <input onChange={event => setTimeLost(event.target.value)} type="time" id="time" name="time" className="postInput2"></input>
                     </span><br></br>
 
                     <label for="itemDate">{props.dateLabel}:</label>
-                        <input type="date" id="itemDate" name="itemDate" className="postInput2"></input> <br></br>
+                        <input onChange={event => setDateLost(event.target.value)} type="date" id="itemDate" name="itemDate" className="postInput2"></input> <br></br>
 
                         <label for="loc">{props.locationLabel}:</label>
-                            <input list="locations" name="loc" id="loc" className="postInput2" id="locInput"></input>
+                            <input onChange={event => setLocationLost(event.target.value)} list="locations" name="loc" id="loc" className="postInput2" id="locInput"></input>
                             <datalist id="locations">
                                 <option value="Clough Undergraduate Learning Commons"></option>
                                 <option value="Klaus College of Computing"></option>
@@ -47,11 +56,11 @@ const Popup = (props) => {
                             </datalist> <br></br>
 
                         <label for="img">Select image:</label>
-                            <input type="file" id="img" name="img" accept="image/*" className="postInput2" id="imgInput"></input> <br></br>
+                            <input onChange={event => setImgSrc(event.target.value)} type="file" id="img" name="img" accept="image/*" className="postInput2" id="imgInput"></input> <br></br>
 
-                            <input type="text" placeholder="Item Description" className="postInput" id="descriptionInput"></input> <br></br>
+                            <input onChange={event => setDescription(event.target.value)} type="text" placeholder="Item Description" className="postInput" id="descriptionInput"></input> <br></br>
 
-                        <input type="text" placeholder="Tags: e.g. blue, waterbottle" className="postInput"></input> <br></br>
+                        <input onChange={event => setTagList(event.target.value)} type="text" placeholder="Tags: e.g. blue, waterbottle" className="postInput"></input> <br></br>
 
                     <button type="button" id="addPost" onClick={handlePostButtonClick}>Post</button>
                  </div>
