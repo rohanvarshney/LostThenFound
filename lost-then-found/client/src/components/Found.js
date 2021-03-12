@@ -55,11 +55,49 @@ const Found = (props) => {
       return searched;
     }
 
+    function isFilteredFor(item, filterDate, filterTime, tagsList) {
+      var searched = false;
+      if (filterDate < item.date) {
+        searched = true;
+      }
+      return searched;
+
+
+    }
+
+    function handleFilterAction(e) {
+      console.log('The filter action was called.');
+      console.log("Filter Params: " + filterDate + ", " + filterTime + ", " + tagsList);
+      const allItems = posts;
+
+      if (filterDate === "" && filterTime === "" && (tagsList == null || tagsList.length == 0)) {
+          updatePosts(originalPosts);
+      } else {
+
+          var filteredItems = allItems.filter(function (item) {
+            var validItem = isFilteredFor(item.props, filterDate, filterTime, tagsList);
+            if (validItem == true) {
+              console.log("Match");
+              console.log(item.props);
+              return true;
+            } else {
+              console.log("Not a match");
+              return false;
+            }
+
+          });
+
+          updatePosts(filteredItems);
+
+      }
+
+
+    }
+
     function handleSearchButtonClick(e) {
         e.preventDefault();
         console.log('The search button was clicked.');
         console.log("Search Bar Text:" + searchText);
-        console.log("Filter Params: " + filterDate + ", " + filterTime + ", " + tagsList);
 
         // Do onChange event for other fields as needed
         const allItems = originalPosts;
