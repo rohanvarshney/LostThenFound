@@ -32,9 +32,43 @@ const Found = (props) => {
     const [searchText, setSearchText] = useState('');
     const [filterOpen, setFilterOpen] = useState(false);
 
-    const [filterDate, setFilterDate] = useState();
-    const [filterTime, setFilterTime] = useState();
-    const [tagsList, setTagsList] = useState([]);
+    var [filterDate] = useState("");
+    var [filterTime] = useState("");
+    var [tagsList] = useState([]);
+    var [a, b, c] = [false, false, false]
+
+    const setFilterDate = (fd) => {
+      filterDate = fd;
+      a = true;
+      if (a && b && c) {
+        handleFilterAction();
+        a = false;
+        b = false;
+        c = false;
+      }
+    }
+    const setFilterTime = (ft) => {
+      filterTime = ft;
+      b = true;
+      if (a && b && c) {
+        handleFilterAction();
+        a = false;
+        b = false;
+        c = false;
+      }
+    }
+
+    const setTagsList = (tl) => {
+      tagsList = tl;
+      c = true;
+      if (a && b && c) {
+        handleFilterAction();
+        a = false;
+        b = false;
+        c = false;
+      }
+
+    }
 
     // handler for toggling filter popup
     const toggleFilter = (d) => {
@@ -55,20 +89,29 @@ const Found = (props) => {
       return searched;
     }
 
+    function convertDateFormat(originalDate) {
+      console.log("Changing: " + originalDate);
+      // from yyyy-mm-dd to mm/dd/yyyy
+      var parts = originalDate.split("-");
+      var newDate = parts[1] + "/" + parts[2] + "/" + parts[0];
+      return newDate;
+    }
+
     function isFilteredFor(item, filterDate, filterTime, tagsList) {
       var searched = false;
-      if (filterDate < item.date) {
+      console.log(convertDateFormat(filterDate));
+      console.log(item.date);
+      if (convertDateFormat(filterDate) == item.date) {
         searched = true;
       }
       return searched;
 
-
     }
 
-    function handleFilterAction(e) {
+    function handleFilterAction() {
       console.log('The filter action was called.');
       console.log("Filter Params: " + filterDate + ", " + filterTime + ", " + tagsList);
-      const allItems = posts;
+      const allItems = originalPosts;
 
       if (filterDate === "" && filterTime === "" && (tagsList == null || tagsList.length == 0)) {
           updatePosts(originalPosts);
