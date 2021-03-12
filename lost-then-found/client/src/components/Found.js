@@ -95,6 +95,7 @@ const Found = (props) => {
     }
 
     function handleSearchButtonClick(e) {
+        setSearchText(e.target.value);
         e.preventDefault();
         console.log('The search button was clicked.');
         console.log("Search Bar Text:" + searchText);
@@ -102,7 +103,7 @@ const Found = (props) => {
         // Do onChange event for other fields as needed
         const allItems = originalPosts;
 
-        if (searchText === "") {
+        if (e.target.value === "" | searchText === "") {
           updatePosts(originalPosts);
         } else {
           var searchedItems = allItems.filter(function (item) {
@@ -124,8 +125,8 @@ const Found = (props) => {
       <div>
       <div class="container">
         <div id="searchPost">
-          <input onChange={event => setSearchText(event.target.value)} type="text" placeholder="Search by keyword..." class="searchBar"></input>
-          <button type="button" id="search" onClick={handleSearchButtonClick}>Search</button>
+          <input onChange={event => handleSearchButtonClick(event)} type="text" placeholder="Search by keyword..." class="searchBar"></input>
+          {/*<button type="button" id="search" onClick={handleSearchButtonClick}>Search</button>*/}
           <div className="filter-container">
             <button type="button" id="filter" onClick={toggleFilter}>Filter</button>
             {filterOpen && <Filter passFilterDate={setFilterDate} passFilterTime={setFilterTime} passTagsList={setTagsList} />}
