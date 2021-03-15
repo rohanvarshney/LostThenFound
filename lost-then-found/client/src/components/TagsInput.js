@@ -41,7 +41,7 @@ const TagsInput = (props) => {
             {tags.map((tag, index) => (
                 <li key={index}>
                     <span>{tag}</span>
-                <i className="material-icons" onClick={() => removeTags(index)}></i>
+                <i className="material-icons" onClick={() => removeTags(index)}>close</i>
                 </li>
                 ))}
             </ul>
