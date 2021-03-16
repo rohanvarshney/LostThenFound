@@ -42,9 +42,7 @@ const Found = (props) => {
       a = true;
       if (a && b && c) {
         handleFilterAction();
-        a = false;
-        b = false;
-        c = false;
+        a = b = c = false;
       }
     }
     const setFilterTime = (ft) => {
@@ -52,9 +50,7 @@ const Found = (props) => {
       b = true;
       if (a && b && c) {
         handleFilterAction();
-        a = false;
-        b = false;
-        c = false;
+        a = b = c = false;
       }
     }
 
@@ -63,9 +59,7 @@ const Found = (props) => {
       c = true;
       if (a && b && c) {
         handleFilterAction();
-        a = false;
-        b = false;
-        c = false;
+        a = b = c = false;
       }
 
     }
@@ -90,6 +84,9 @@ const Found = (props) => {
     }
 
     function convertDateFormat(originalDate) {
+      if (!originalDate || originalDate === "") {
+        return "";
+      }
       console.log("Changing: " + originalDate);
       // from yyyy-mm-dd to mm/dd/yyyy
       var parts = originalDate.split("-");
@@ -99,8 +96,8 @@ const Found = (props) => {
 
     function isFilteredFor(item, filterDate, filterTime, tagsList) {
       var searched = false;
-      console.log(convertDateFormat(filterDate));
-      console.log(item.date);
+      // console.log(convertDateFormat(filterDate));
+      // console.log(item.date);
       if (convertDateFormat(filterDate) == item.date) {
         searched = true;
       }
@@ -113,10 +110,9 @@ const Found = (props) => {
       console.log("Filter Params: " + filterDate + ", " + filterTime + ", " + tagsList);
       const allItems = originalPosts;
 
-      if (filterDate === "" && filterTime === "" && (tagsList == null || tagsList.length == 0)) {
+      if (!filterDate && !filterTime && tagsList.length == 0) {
           updatePosts(originalPosts);
       } else {
-
           var filteredItems = allItems.filter(function (item) {
             var validItem = isFilteredFor(item.props, filterDate, filterTime, tagsList);
             if (validItem == true) {
@@ -133,24 +129,22 @@ const Found = (props) => {
           updatePosts(filteredItems);
 
       }
-
-
     }
 
     function handleSearchButtonClick(e) {
-        setSearchText(e.target.value);
+      // console.log(e);
         e.preventDefault();
         console.log('The search button was clicked.');
-        console.log("Search Bar Text:" + searchText);
+        console.log("Search Bar Text:" + e.target.value);
 
         // Do onChange event for other fields as needed
         const allItems = originalPosts;
 
-        if (e.target.value === "" | searchText === "") {
+        if (e.target.value === "") {
           updatePosts(originalPosts);
         } else {
           var searchedItems = allItems.filter(function (item) {
-            var validItem = isSearchedFor(item.props, searchText);
+            var validItem = isSearchedFor(item.props, e.target.value);
             if (validItem == true) {
               console.log("Match");
               console.log(item.props);
@@ -162,6 +156,8 @@ const Found = (props) => {
           });
           updatePosts(searchedItems);
         }
+
+        setSearchText(e.target.value);
     }
 
     return (
