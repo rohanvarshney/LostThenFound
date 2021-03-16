@@ -3,10 +3,19 @@ const { MongoClient } = require("mongodb");
 const express = require('express');
 const posts = require('./routes/api/posts');
 const mongoose = require('mongoose');
+const bodyParser = require("body-parser");
 
 // initialize express
 const app = express();
 app.use(express.json());
+
+// Bodyparser middleware
+app.use(
+  bodyParser.urlencoded({
+    extended: false
+  })
+);
+app.use(bodyParser.json());
 
 // https://www.codementor.io/@kakarganpat/how-to-setup-react-and-node-js-in-a-project-koxwqbssl
 
