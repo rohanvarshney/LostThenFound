@@ -55,28 +55,28 @@ mongoose
 
 
 // Prints Posts all posts in lost_then_found db
-async function printPosts() {
-    try {
-        await client.connect();
-        const collection = client.db("lost_then_found").collection("posts");
-        var postList = null;
+// async function printPosts() {
+//     try {
+//         await client.connect();
+//         const collection = client.db("lost_then_found").collection("posts");
+//         var postList = null;
 
-        collection.find().toArray(function (err, posts) {
-        	console.log(posts);
-        	postList = posts;
-        });
-        // perform actions on the collection object
-        await client.close();
+//         collection.find().toArray(function (err, posts) {
+//         	console.log(posts);
+//         	postList = posts;
+//         });
+//         // perform actions on the collection object
+//         await client.close();
 
-        console.log("Connected correctly to server");
-        return postList;
+//         console.log("Connected correctly to server");
+//         return postList;
 
-    } catch (err) {
-        console.log(err.stack);
-        await client.close();
-        return null;
-    }
-}
+//     } catch (err) {
+//         console.log(err.stack);
+//         await client.close();
+//         return null;
+//     }
+// }
 
 
 // Use routes (API)
@@ -88,5 +88,5 @@ app.listen(port, () => console.log(`Server started on port ${port}`));
 
 
 // logs all posts
-console.log(printPosts());
+// console.log(printPosts());
 // console.log(connectToMongoDB());

@@ -25,6 +25,8 @@ router.post('/', (req, res) => {
         date_lost: req.body.date_lost,
         tags: req.body.tags,
         date_found: req.body.date_found,
+        time_lost: req.body.time_lost,
+        location_lost: req.body.location_lost,
         location_found: req.body.location_found,
         current_location: req.body.current_location,
         possible_matches: req.body.possible_matches,
