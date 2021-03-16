@@ -4,6 +4,9 @@ const express = require('express');
 const posts = require('./routes/api/posts');
 const mongoose = require('mongoose');
 const bodyParser = require("body-parser");
+const passport = require("passport");
+
+const users = require("./routes/api/users");
 
 // initialize express
 const app = express();
@@ -87,6 +90,14 @@ async function printPosts() {
     }
 }
 
+// Passport middleware
+app.use(passport.initialize());
+
+// Passport config
+require("./config/passport")(passport);
+
+// User Routes
+app.use("/api/users", users);
 
 // Use routes (API)
 // Description: Any request that goes to /api/posts will go to the 'posts' api file
