@@ -9,7 +9,7 @@ const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 
 // Load User model
-const User = require("../../models/User");
+const User = require("../../Model/User");
 
 // @route POST api/users/register
 // @desc Register user
@@ -50,7 +50,7 @@ User.findOne({ email: req.body.email }).then(user => {
 // @access Public
 router.post("/login", (req, res) => {
   // Form validation
-  
+
 const { errors, isValid } = validateLoginInput(req.body);
 
 // Check validation

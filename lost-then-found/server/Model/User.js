@@ -12,7 +12,6 @@ name:"Mary Smith"
 email:"MarySmith@email.com"
 password:"password"
 date_created:2021-10-25T09:00:00.000+00:00
-date_lost:2020-12-11T04:00:00.000+00:00
 posts_made:Array
 possible_matches:Array
 */
