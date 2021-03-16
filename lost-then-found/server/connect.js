@@ -54,7 +54,7 @@ const client = new MongoClient(url);
 
 
 // Database Configuration
-const db = require('./keys').mongoURI;
+const db = require('./config/keys').mongoURI;
 
 // Connect to mongodb
 mongoose
