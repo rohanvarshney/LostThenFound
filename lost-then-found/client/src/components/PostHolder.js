@@ -4,7 +4,7 @@ import Post from "components/Post";
 const PostHolder = (props) => {
 
     function Clicked() {
-        consosle.log("CLICKED");
+        console.log("CLICKED");
     }
 
     const posts = props.items.map((item, idx) => (
