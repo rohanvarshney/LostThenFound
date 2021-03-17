@@ -11,9 +11,11 @@ who_created:"Mary Smith"
 post_title:"Linear Algebra Textbook"
 description:"I think I might have left my book when I was studying in Crosland.. Ha..."
 found:false
-date_posted:2020-12-12T04:00:00.000+00:00
-date_lost:2020-12-11T04:00:00.000+00:00
+date_posted:2020-12-12T04:00:00.000+00:00 (Date.now())
+date_lost:String from Rohan's method in convertDateFormat
 tags:Array
+time_lost:String
+location_lost:String (value from dropdown)
 date_found:0000-01-01T00:00:00.000+00:00
 location_found:""
 current_location:"Crosland Tower"
@@ -43,12 +45,17 @@ const PostSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    time_lost: {
+        type: String
+    },
     date_lost: {
-        type: Date,
-        default: Date.now
+        type: String
     },
     tags: {
         type: Array
+    },
+    location_lost: {
+        type: String
     },
     date_found: {
         type: Date

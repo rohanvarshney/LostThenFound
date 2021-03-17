@@ -67,81 +67,81 @@ mongoose
 
 
 // Prints Posts all posts in lost_then_found db
-async function printPosts() {
-    try {
-        await client.connect();
-        const collection = client.db("lost_then_found").collection("posts");
-        var postList = null;
-
-        collection.find().toArray(function (err, posts) {
-        	console.log(posts);
-        	postList = posts;
-        });
-        // perform actions on the collection object
-        await client.close();
-
-        console.log("Connected correctly to server [posts]");
-        return postList;
-
-    } catch (err) {
-        console.log(err.stack);
-        await client.close();
-        return null;
-    }
-}
+//async function printPosts() {
+//    try {
+//        await client.connect();
+//        const collection = client.db("lost_then_found").collection("posts");
+//        var postList = null;
+//
+//        collection.find().toArray(function (err, posts) {
+//        	console.log(posts);
+//        	postList = posts;
+//        });
+//        // perform actions on the collection object
+//        await client.close();
+//
+//        console.log("Connected correctly to server [posts]");
+//        return postList;
+//
+//    } catch (err) {
+//        console.log(err.stack);
+//        await client.close();
+//        return null;
+//    }
+//}
 
 // Prints Users all users in lost_then_found db
-async function printUsers() {
-    try {
-        await client.connect();
-        const collection = client.db("lost_then_found").collection("users");
-        var userList = null;
-
-        collection.find().toArray(function (err, users) {
-            console.log(users);
-            userList = users;
-        });
-        // perform actions on the collection object
-        await client.close();
-
-        console.log("Connected correctly to server [users]");
-        return userList;
-
-    } catch (err) {
-        console.log(err.stack);
-        await client.close();
-        return null;
-    }
-}
+//async function printUsers() {
+//    try {
+//        await client.connect();
+//        const collection = client.db("lost_then_found").collection("users");
+//        var userList = null;
+//
+//        collection.find().toArray(function (err, users) {
+//            console.log(users);
+//            userList = users;
+//        });
+//        // perform actions on the collection object
+//        await client.close();
+//
+//        console.log("Connected correctly to server [users]");
+//        return userList;
+//
+//    } catch (err) {
+//        console.log(err.stack);
+//        await client.close();
+//        return null;
+//    }
+//}
 
 // Prints all users and posts in lost_then_found db
-async function printBoth() {
-    try {
-        await client.connect();
-        const postCollection = client.db("lost_then_found").collection("posts");
-        const userCollection = client.db("lost_then_found").collection("users");
-        var bothList = null;
-
-        postCollection.find().toArray(function (err, posts) {
-            console.log(posts);
-            bothList = posts;
-        });
-        userCollection.find().toArray(function (err, users) {
-            console.log(users);
-            bothList.push(users);
-        });
-        // perform actions on the collection object
-        await client.close();
-
-        console.log("Connected correctly to server [posts and users]");
-        return bothList;
-
-    } catch (err) {
-        console.log(err.stack);
-        await client.close();
-        return null;
-    }
-}
+//async function printBoth() {
+//    try {
+//        await client.connect();
+//        const postCollection = client.db("lost_then_found").collection("posts");
+//        const userCollection = client.db("lost_then_found").collection("users");
+//        var bothList = null;
+//
+//        postCollection.find().toArray(function (err, posts) {
+//            console.log(posts);
+//            bothList = posts;
+//        });
+//        userCollection.find().toArray(function (err, users) {
+//            console.log(users);
+//            bothList.push(users);
+//        });
+//        // perform actions on the collection object
+//        await client.close();
+//
+//        console.log("Connected correctly to server [posts and users]");
+//        return bothList;
+//
+//    } catch (err) {
+//        console.log(err.stack);
+//        await client.close();
+//        return null;
+//    }
+//}
 
 // Passport middleware
 app.use(passport.initialize());
@@ -164,4 +164,4 @@ app.listen(port, () => console.log(`Server started on port ${port}`));
 // console.log(printPosts());
 // console.log(connectToMongoDB());
 // console.log(printUsers());
-console.log(printBoth());
+// console.log(printBoth());

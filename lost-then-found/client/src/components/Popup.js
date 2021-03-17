@@ -25,10 +25,43 @@ const Popup = (props) => {
         console.log("Tag List:" + tagList);
         // Do onChange event for other fields as needed
 
-        //TODO: Make object to pass into Express API call to post item.
+        // TODO: add correct post type (lost/found) based on state of dialog?
+        const postObject = { 
+            post_title: title,
+            time_lost: timeLost,
+            date_lost: dateLost,
+            tags: tagList,
+            description: description,
+            location_lost: locationLost,
+            imgSrc: {
+                data: imageSrc,
+                contentType: 'image/jpg'
+            }
+            // imgSrc: imageSrc
+        };   
+
+        // create a POST request with postObject as body
+        const postRequest = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(postObject)
+        };
+
+        // performs post request using api route
+        fetch("/api/posts", postRequest)
+        .then(response => response.json())
+        .then(data => {
+          console.log('Success:', data);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+
+
     }
-
-
+    
     return (
         <div className="popup-box">
             <div className="box">
