@@ -13,6 +13,9 @@ import Lost from "./components/Lost";
 import Found from "./components/Found";
 import Matches from "./components/Matches";
 import Nav from "./components/Nav";
+import Register from "./components/auth/Register";
+import Login from "./components/auth/Login";
+import {NavLink} from "react-router-dom";
 
 function App() {
 
@@ -188,19 +191,16 @@ function App() {
   */
 
 
-
+  //the login part doesn't work and I'm not sure why
 
   return (
     <Router>
     <div>
       <Nav />
-        <div class="login">
-          <p> Login | Settings </p>
-        </div>
-
         <div class="tabs">
-
             <Switch>
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
               <Route path="/Lost" render={() => <Lost
               itemData={itemData}
               setData={setData}/> }

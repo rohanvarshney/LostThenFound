@@ -59,9 +59,9 @@ const Popup = (props) => {
           console.error('Error:', error);
         });
 
-        
-    }
 
+    }
+    
     return (
         <div className="popup-box">
             <div className="box">
