@@ -96,8 +96,8 @@ const Lost = (props) => {
 
     function isFilteredFor(item, filterDate, filterTime, tagsList) {
       var searched = false;
-      //console.log(convertDateFormat(filterDate));
-      //console.log(item.date);
+      // console.log(convertDateFormat(filterDate));
+      // console.log(item.date);
       if (convertDateFormat(filterDate) == item.date) {
         searched = true;
       }
