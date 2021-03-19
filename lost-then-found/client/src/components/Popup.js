@@ -5,39 +5,38 @@ const Popup = (props) => {
 
 
     const [title, setTitle] = useState('');
-    const [timeLost, setTimeLost] = useState('');
-    const [dateLost, setDateLost] = useState('');
-    const [locationLost, setLocationLost] = useState('');
+    const [time, setTime] = useState('');
+    const [date, setDate] = useState('');
+    const [location, setLocation] = useState('');
     const [imageSrc, setImgSrc] = useState('');
     const [description, setDescription] = useState('');
     const [tagList, setTagList] = useState('');
 
-    //const [isLost, setLost] = useState("lost")
     function handlePostButtonClick(e) {
         e.preventDefault();
         console.log('The link was clicked.');
         console.log("Title:" + title);
-        console.log("Time Lost:" + timeLost);
-        console.log("Date Lost:" + dateLost);
-        console.log("Location Lost:" + locationLost);
+        console.log("Time Lost:" + time);
+        console.log("Date Lost:" + date);
+        console.log("Location Lost:" + location);
         console.log("Img Src: " + imageSrc);
         console.log("Description: " + description);
         console.log("Tag List:" + tagList);
         // Do onChange event for other fields as needed
 
-        // TODO: add correct post type (lost/found) based on state of dialog?
+        // Attribute specs:
+        // 'date' corresponds to date_lost field or date_found field
+        // 'time' corresponds to time_lost field or time_found field
+        // 'location' corresponds to location_lost field or current_location field, for lost posts and found posts respectively
         const postObject = { 
+            found: props.isFound,
             post_title: title,
-            time_lost: timeLost,
-            date_lost: dateLost,
-            tags: tagList,
+            time: time,
+            date: date,
+            location: location,
+            tags: tagList.split(','),
             description: description,
-            location_lost: locationLost,
-            imgSrc: {
-                data: imageSrc,
-                contentType: 'image/jpg'
-            }
-            // imgSrc: imageSrc
+            imgSrc: imageSrc
         };   
 
         // create a POST request with postObject as body
@@ -72,14 +71,14 @@ const Popup = (props) => {
 
                     <span className="postInputWrap">
                         <label for="time" classsName="inputLabel">{props.timeLabel}:</label>
-                        <input onChange={event => setTimeLost(event.target.value)} type="time" id="time" name="time" className="postInput2"></input>
+                        <input onChange={event => setTime(event.target.value)} type="time" id="time" name="time" className="postInput2"></input>
                     </span><br></br>
 
                     <label for="itemDate">{props.dateLabel}:</label>
-                        <input onChange={event => setDateLost(event.target.value)} type="date" id="itemDate" name="itemDate" className="postInput2"></input> <br></br>
+                        <input onChange={event => setDate(event.target.value)} type="date" id="itemDate" name="itemDate" className="postInput2"></input> <br></br>
 
                         <label for="loc">{props.locationLabel}:</label>
-                            <input onChange={event => setLocationLost(event.target.value)} list="locations" name="loc" id="loc" className="postInput2" id="locInput"></input>
+                            <input onChange={event => setLocation(event.target.value)} list="locations" name="loc" id="loc" className="postInput2" id="locInput"></input>
                             <datalist id="locations">
                                 <option value="Clough Undergraduate Learning Commons"></option>
                                 <option value="Klaus College of Computing"></option>

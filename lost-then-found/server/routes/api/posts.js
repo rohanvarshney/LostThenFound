@@ -7,30 +7,36 @@ const Post = require('../../Model/Post');
 // @route GET request to api/posts
 // gets posts in descending order (by date)
 router.get('/', (req, res) => {
-    Post.find()
-        .sort({ date: -1 })
-        .then(posts => res.json(posts));
+
+    // TODO: sort by date_posted
+    Promise.all([
+        // gets all posts that are labeled LOST (i.e. found: false)
+        Post.find({found: false}).sort({date_posted:-1}),
+        // gets posts that are labeled FOUND (i.e. found: true)
+        Post.find({found: true}).sort({date_posted:-1})
+    ])
+    .then(allItems => {
+        // return allItems in the format [lost_array,found_array]
+        res.json(allItems);
+    })
+    .catch(error => console.error(error));
 });
 
 // @route POST request to api/posts
 // Create a post
 router.post('/', (req, res) => {
     const newPost = new Post({
-        post_id: req.body.post_id,
         who_created: req.body.who_created,
         post_title: req.body.post_title,
         description: req.body.description,
         found: req.body.found,
         date_posted: req.body.date_posted,
-        date_lost: req.body.date_lost,
+        date: req.body.date || 'None',
         tags: req.body.tags,
-        date_found: req.body.date_found,
-        time_lost: req.body.time_lost,
-        location_lost: req.body.location_lost,
-        location_found: req.body.location_found,
-        current_location: req.body.current_location,
+        time: req.body.time || 'None',
+        location: req.body.location || 'None',
         possible_matches: req.body.possible_matches,
-        imgSrc: req.body.imgSrc
+        imgSrc: req.body.imgSrc || 'https://hips.hearstapps.com/vidthumb/images/delish-credit-card-water-bottle-002-1523389699.jpeg?crop=1.00xw%3A1.00xh%3B0%2C0&resize=480%3A270'
     });
 
     newPost.save().then(post => res.json(post));

@@ -5,27 +5,29 @@ import Filter from "./Filter";
 
 const Lost = (props) => {
 
-  const originalPosts = props.itemData[0].items.map((item, idx) => (
-      <Post
-          imgSrc={item.imgSrc}
-          title={item.title}
-          date={item.date}
-          time={item.time}
-          location={item.location}
-          description={item.description}
-      />
-  ));
+  const originalPosts = props.itemData[0];
 
-  var [posts, updatePosts] = useState(props.itemData[0].items.map((item, idx) => (
-    <Post
-          imgSrc={item.imgSrc}
-          title={item.title}
-          date={item.date}
-          time={item.time}
-          location={item.location}
-          description={item.description}
-      />
-  )));
+  const [posts, updatePosts] = useState(props.itemData[0]);
+
+  let fetchItemData = () => {
+      return fetch("/api/posts")
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+              console.log("RESPONSE IS NOT OKAYLOST");
+            }
+        })
+        .catch(error => console.error(error));
+    }
+
+    useEffect(() => {
+      fetchItemData()
+      .then(allPosts => {
+          updatePosts(allPosts[0]);
+      })
+      .catch((err) => console.log(err))},
+      []);
 
     // state management for New Post popup box
     const [visible, setVisible] = useState(false); // default set to hidden
@@ -175,7 +177,16 @@ const Lost = (props) => {
           </div>
         <div class="flex-container">
 
-          {posts}
+          {posts ? posts.map((item, idx) => (
+            <Post
+                  imgSrc={item.imgSrc}
+                  title={item.post_title}
+                  date={item.date}
+                  time={item.time}
+                  location={item.location}
+                  description={item.description}
+              />
+            )) : <p>loading...</p>}
 
           {visible && <Popup
             itemState={'New Lost Item'}
@@ -184,6 +195,7 @@ const Lost = (props) => {
             dateLabel={'Date lost'}
             locationLabel={'Location lost'}
             handleClose={togglePopup}
+            isFound={false}
           />}
         </div>
       </div>

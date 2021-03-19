@@ -5,27 +5,29 @@ import Filter from "./Filter";
 
 const Found = (props) => {
 
-  const originalPosts = props.itemData[1].items.map((item, idx) => (
-      <Post
-          imgSrc={item.imgSrc}
-          title={item.title}
-          date={item.date}
-          time={item.time}
-          location={item.location}
-          description={item.description}
-      />
-  ));
+    const originalPosts = props.itemData[0];
+    const [posts, updatePosts] = useState(props.itemData[0]);
 
-  var [posts, updatePosts] = useState(props.itemData[1].items.map((item, idx) => (
-    <Post
-          imgSrc={item.imgSrc}
-          title={item.title}
-          date={item.date}
-          time={item.time}
-          location={item.location}
-          description={item.description}
-      />
-  )));
+    let fetchItemData = () => {
+      return fetch("/api/posts")
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+              console.log("RESPONSE IS NOT OKAYLOST");
+            }
+        })
+        .catch(error => console.error(error));
+    }
+    
+    // fetch all posts on first page load
+    useEffect(() => {
+      fetchItemData()
+      .then(allPosts => {
+          updatePosts(allPosts[1]);
+      })
+      .catch((err) => console.log(err))},
+      []);
 
     // state management for New Post popup box
     const [visible, setVisible] = useState(false); // default set to hidden
@@ -175,7 +177,16 @@ const Found = (props) => {
         <div class="flex-container">
 
 
-          {posts}
+        {posts ? posts.map((item, idx) => (
+            <Post
+                  imgSrc={item.imgSrc}
+                  title={item.post_title}
+                  date={item.date}
+                  time={item.time}
+                  location={item.location}
+                  description={item.description}
+              />
+            )) : <p>loading...</p>}
 
           {visible && <Popup
             itemState={'New Found Item'}
@@ -184,6 +195,7 @@ const Found = (props) => {
             dateLabel={'Date found'}
             locationLabel={'Location found'}
             handleClose={togglePopup}
+            isFound={true}
           />}
         </div>
       </div>

@@ -152,7 +152,7 @@ require("./config/passport")(passport);
 // User Routes
 app.use("/api/users", users);
 
-// Use routes (API)
+// Post Routes
 // Description: Any request that goes to /api/posts will go to the 'posts' api file
 app.use('/api/posts', posts);
 
