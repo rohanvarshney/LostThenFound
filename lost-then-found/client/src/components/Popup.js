@@ -28,24 +28,21 @@ const Popup = (props) => {
         // 'date' corresponds to date_lost field or date_found field
         // 'time' corresponds to time_lost field or time_found field
         // 'location' corresponds to location_lost field or current_location field, for lost posts and found posts respectively
-        const postObject = { 
-            found: props.isFound,
-            post_title: title,
-            time: time,
-            date: date,
-            location: location,
-            tags: tagList.split(','),
-            description: description,
-            imgSrc: imageSrc
-        };   
 
-        // create a POST request with postObject as body
+        const formData = new FormData();
+        formData.append('found',props.isFound);
+        formData.append('post_title',title);
+        formData.append('time',time);
+        formData.append('date',date);
+        formData.append('location',location);
+        formData.append('tags',tagList.split(','));
+        formData.append('description',description);
+        formData.append('imgSrc',imageSrc);
+
+        // create a POST request with formData as body
         const postRequest = {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(postObject)
+            body: formData
         };
 
         // performs post request using api route
@@ -88,7 +85,7 @@ const Popup = (props) => {
                             </datalist> <br></br>
 
                         <label for="img">Select image:</label>
-                            <input onChange={event => setImgSrc(event.target.value)} type="file" id="img" name="img" accept="image/*" className="postInput2" id="imgInput"></input> <br></br>
+                            <input onChange={event => setImgSrc(event.target.files[0])} type="file" id="img" name="img" accept=".png, .jpg, .jpeg" className="postInput2" id="imgInput"></input> <br></br>
 
                             <input onChange={event => setDescription(event.target.value)} type="text" placeholder="Item Description" className="postInput" id="descriptionInput"></input> <br></br>
 

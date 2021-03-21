@@ -13,8 +13,6 @@ const Found = (props) => {
         .then(response => {
             if (response.ok) {
                 return response.json();
-            } else {
-              console.log("RESPONSE IS NOT OKAYLOST");
             }
         })
         .catch(error => console.error(error));
@@ -179,7 +177,7 @@ const Found = (props) => {
 
         {posts ? posts.map((item, idx) => (
             <Post
-                  imgSrc={item.imgSrc}
+                  imgSrc={`/uploads/${item.imgSrc}`}
                   title={item.post_title}
                   date={item.date}
                   time={item.time}

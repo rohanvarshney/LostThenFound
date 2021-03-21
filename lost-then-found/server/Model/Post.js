@@ -16,9 +16,7 @@ tags: Array (strings)
 time: String                       # contains time lost or time found (depending on post type)
 location: String                   # contains current location or location lost (depending on post type) 
 possible_matches: Array
-
-..TODO
-imgSrc: unimplemented. String URL or image buffer using multer "https://i.pinimg.com/originals/02/1a/08/021a08be4c6cb83ab865beed862afc..."
+imgSrc: String                     # path of a file in /uploads/
 */
 
 
@@ -52,7 +50,8 @@ const PostSchema = new Schema({
     },
     imgSrc:
     {
-        type: String
+        type: String,
+        default: 'default-thumbnail.jpeg'
     },
     time: 
     {

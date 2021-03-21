@@ -5,21 +5,19 @@ import Filter from "./Filter";
 
 const Lost = (props) => {
 
-  const originalPosts = props.itemData[0];
+    const originalPosts = props.itemData[0];
 
-  const [posts, updatePosts] = useState(props.itemData[0]);
+    const [posts, updatePosts] = useState(props.itemData[0]);
 
-  let fetchItemData = () => {
-      return fetch("/api/posts")
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-              console.log("RESPONSE IS NOT OKAYLOST");
-            }
-        })
-        .catch(error => console.error(error));
-    }
+    let fetchItemData = () => {
+        return fetch("/api/posts")
+          .then(response => {
+              if (response.ok) {
+                  return response.json();
+              }
+          })
+          .catch(error => console.error(error));
+      }
 
     useEffect(() => {
       fetchItemData()
@@ -179,7 +177,7 @@ const Lost = (props) => {
 
           {posts ? posts.map((item, idx) => (
             <Post
-                  imgSrc={item.imgSrc}
+                  imgSrc={`/uploads/${item.imgSrc}`}
                   title={item.post_title}
                   date={item.date}
                   time={item.time}

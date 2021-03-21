@@ -1,8 +1,23 @@
 const express = require('express');
 const router = express.Router();
 
+// library for image uploading
+const multer = require('multer');
+
 // Post Model (brings in post model)
 const Post = require('../../Model/Post');
+
+
+const storage = multer.diskStorage({
+    destination: (req, file, callback) => {
+        callback(null, './client/public/uploads/')
+    }, 
+    filename: (req, file, callback) => {
+        callback(null, file.originalname)
+    }
+});
+
+const upload = multer({storage: storage});
 
 // @route GET request to api/posts
 // gets posts in descending order (by date)
@@ -24,8 +39,8 @@ router.get('/', (req, res) => {
 
 // @route POST request to api/posts
 // Create a post
-router.post('/', (req, res) => {
-    const newPost = new Post({
+router.post('/', upload.single('imgSrc'), (req, res) => {
+    var newPost = new Post({
         who_created: req.body.who_created,
         post_title: req.body.post_title,
         description: req.body.description,
@@ -35,9 +50,11 @@ router.post('/', (req, res) => {
         tags: req.body.tags,
         time: req.body.time || 'None',
         location: req.body.location || 'None',
-        possible_matches: req.body.possible_matches,
-        imgSrc: req.body.imgSrc || 'https://hips.hearstapps.com/vidthumb/images/delish-credit-card-water-bottle-002-1523389699.jpeg?crop=1.00xw%3A1.00xh%3B0%2C0&resize=480%3A270'
+        possible_matches: req.body.possible_matches
     });
+
+    // set imgSrc to file name only if file exists. default image in PostSchema used otherwise.
+    if (req.file) newPost.imgSrc = req.file.originalname;
 
     newPost.save().then(post => res.json(post));
 });
