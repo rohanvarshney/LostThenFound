@@ -75,30 +75,20 @@ const Lost = (props) => {
     };
 
     function isSearchedFor(item, searchText) {
+      if (item === undefined) {
+        return false;
+      }
       var searched = false;
-      if (item.title.toLowerCase().includes(searchText.toLowerCase())) {
+      if (item.post_title.toLowerCase().includes(searchText.toLowerCase())) {
         searched = true;
       }
 
       return searched;
     }
 
-    function convertDateFormat(originalDate) {
-      if (!originalDate || originalDate === "") {
-        return "";
-      }
-      console.log("Changing: " + originalDate);
-      // from yyyy-mm-dd to mm/dd/yyyy
-      var parts = originalDate.split("-");
-      var newDate = parts[1] + "/" + parts[2] + "/" + parts[0];
-      return newDate;
-    }
-
     function isFilteredFor(item, filterDate, filterTime, tagsList) {
       var searched = false;
-      // console.log(convertDateFormat(filterDate));
-      // console.log(item.date);
-      if (convertDateFormat(filterDate) == item.date) {
+      if (filterDate === item.date) {
         searched = true;
       }
       return searched;
@@ -114,10 +104,10 @@ const Lost = (props) => {
           updatePosts(originalPosts);
       } else {
           var filteredItems = allItems.filter(function (item) {
-            var validItem = isFilteredFor(item.props, filterDate, filterTime, tagsList);
+            var validItem = isFilteredFor(item, filterDate, filterTime, tagsList);
             if (validItem == true) {
               console.log("Match");
-              console.log(item.props);
+              console.log(item);
               return true;
             } else {
               console.log("Not a match");
@@ -131,7 +121,7 @@ const Lost = (props) => {
       }
     }
 
-    function handleSearchButtonClick(e) {
+    function handleSearchAction(e) {
       // console.log(e);
         e.preventDefault();
         console.log('The search button was clicked.');
@@ -144,7 +134,7 @@ const Lost = (props) => {
           updatePosts(originalPosts);
         } else {
           var searchedItems = allItems.filter(function (item) {
-            var validItem = isSearchedFor(item.props, e.target.value);
+            var validItem = isSearchedFor(item, e.target.value);
             if (validItem == true) {
               console.log("Match");
               console.log(item.props);
@@ -165,8 +155,8 @@ const Lost = (props) => {
         <div>
       <div class="container">
         <div id="searchPost">
-          <input onChange={event => handleSearchButtonClick(event)} type="text" placeholder="Search by keyword..." class="searchBar"></input>
-          {/*<button type="button" id="search" onClick={handleSearchButtonClick}>Search</button>*/}
+          <input onChange={event => handleSearchAction(event)} type="text" placeholder="Search by keyword..." class="searchBar"></input>
+          {/*<button type="button" id="search" onClick={handleSearchAction}>Search</button>*/}
           <div className="filter-container">
             <button type="button" id="filter" onClick={toggleFilter}>Filter</button>
             {filterOpen && <Filter passFilterDate={setFilterDate} passFilterTime={setFilterTime} passTagsList={setTagsList} />}

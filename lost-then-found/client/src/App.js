@@ -34,7 +34,7 @@ function App() {
       .catch(error => console.error(error));
   }
 
-  // calling useEffect with an anonymous function as arg1 
+  // calling useEffect with an anonymous function as arg1
   // and '[]' as arg2 makes useEffect only be called on initial load
   useEffect(() => {
     fetchAllItemData()
