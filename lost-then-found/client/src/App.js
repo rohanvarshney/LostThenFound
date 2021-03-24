@@ -7,6 +7,8 @@ import {
   Link,
   useParams
 } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./store";
 import './App.css';
 import Home from "./components/Home";
 import Lost from "./components/Lost";
@@ -45,32 +47,34 @@ function App() {
   //the login part doesn't work and I'm not sure why
 
   return (
-    <Router>
-    <div>
-      <Nav />
-        <div class="tabs">
-            <Switch>
-              <Route exact path="/register" component={Register} />
-              <Route exact path="/login" component={Login} />
-              <Route path="/Lost" render={() => <Lost
-              itemData={itemData}
-              setData={setItemData}/> }
-              exact
-              />
-              <Route path="/Found" render={() => <Found
-              itemData={itemData}
-              setData={setItemData}/> }
-              exact
-              />
-              <Route path="/Matches" component={Matches}/>
-              <Route path="/" component={Home}/>
-            </Switch>
+    <Provider store={store}>
+      <Router>
+        <div>
+          <Nav />
+            <div class="tabs">
+                <Switch>
+                  <Route exact path="/register" component={Register} />
+                  <Route exact path="/login" component={Login} />
+                  <Route path="/Lost" render={() => <Lost
+                  itemData={itemData}
+                  setData={setItemData}/> }
+                  exact
+                  />
+                  <Route path="/Found" render={() => <Found
+                  itemData={itemData}
+                  setData={setItemData}/> }
+                  exact
+                  />
+                  <Route path="/Matches" component={Matches}/>
+                  <Route path="/" component={Home}/>
+                </Switch>
+            </div>
+            <div class="footer">
+              <p>About | Community Guidelines | Help </p>
+            </div>
         </div>
-        <div class="footer">
-          <p>About | Community Guidelines | Help </p>
-        </div>
-    </div>
-    </Router>
+      </Router>
+    </Provider>
   );
 
 }
