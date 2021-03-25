@@ -68,9 +68,13 @@ function App() {
               setData={setItemData}/> }
               exact
               />
-              <Route path="/Matches" component={Matches}/>
+              <Route path="/Matches" render={() => <Matches
+              itemData={itemData}
+              setData={setItemData}/> }
+              exact
+              />
               <Route path="/" component={Home}/>
-            
+
         </div>
         </Switch>
     </div>
