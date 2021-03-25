@@ -12,6 +12,9 @@ import Home from "./components/Home";
 import Lost from "./components/Lost";
 import Found from "./components/Found";
 import Matches from "./components/Matches";
+import About from "./components/About";
+import CommunityGuidelines from "./components/CommunityGuidelines";
+import Contact from "./components/Contact";
 import Nav from "./components/Nav";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
@@ -48,8 +51,11 @@ function App() {
     <Router>
     <div>
       <Nav />
+      <Switch>
+        <Route path="/About" component={About} />
+        <Route path="/Community-Guidelines" component={CommunityGuidelines} />
+        <Route path="/Contact" component={Contact} />
         <div class="tabs">
-            <Switch>
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
               <Route path="/Lost" render={() => <Lost
@@ -64,11 +70,9 @@ function App() {
               />
               <Route path="/Matches" component={Matches}/>
               <Route path="/" component={Home}/>
-            </Switch>
+            
         </div>
-        <div class="footer">
-          <p>About | Community Guidelines | Help </p>
-        </div>
+        </Switch>
     </div>
     </Router>
   );
