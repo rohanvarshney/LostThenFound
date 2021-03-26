@@ -3,8 +3,7 @@ import React from 'react';
 const About = () => {
     return (
         <div class="basePage">
-            <h2>About Us</h2>
-            <h1>Lost Then Found is a digital, community-based lost-and-found solution for college campuses</h1>
+            <h1><b>Lost Then Found</b> is a digital, community-based lost-and-found solution for college campuses.</h1>
             <p>Misplacing items on campus is a common nuisance for busy college students and faculty. 
                 It can cost lots of valuable time and money to search for and replace important items, 
                 and most universities have no effective systems in place to make the searching process easier and more 

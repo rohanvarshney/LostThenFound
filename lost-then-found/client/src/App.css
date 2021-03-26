@@ -318,6 +318,10 @@
   font-size: 15px;
   margin-bottom: 2px;
   margin-left: 5px;
+  width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
 }
 
@@ -515,7 +519,12 @@
   font-size: 30px;
 }
 
-
+/* CONTACT US */
+.contactInfo input {
+  padding:10px;
+  margin:10px 0;
+  border: 0;
+}
 
 /* UNSORTED */
 

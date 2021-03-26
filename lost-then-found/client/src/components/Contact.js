@@ -6,10 +6,8 @@ const Contact = () => {
             <h1>Contact Us</h1>
             <div id="contactInfo">
                 <div id="nameInput">
-                    <label for="fname">First Name</label>
-                    <input type="text" id="name" name="fname"></input>
-                    <label for="lname">Last Name</label>
-                    <input type="text" id="name" name="lname"></input>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name"></input>
                 </div>
                 <br></br>
                 <label for="userEmail">Email</label>
