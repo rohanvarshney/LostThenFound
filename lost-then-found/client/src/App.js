@@ -73,7 +73,7 @@ function App() {
               setData={setItemData}/> }
               exact
               />
-              <Route path="/" component={Home}/>
+              <Route exact path="/" component={Home}/>
 
         </div>
         </Switch>
