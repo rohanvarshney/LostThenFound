@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-// library for image uploading
+// Image uploading library
 const multer = require('multer');
 
-// Post Model (brings in post model)
+// Post Model import
 const Post = require('../../Model/Post');
 
 
@@ -22,8 +22,6 @@ const upload = multer({storage: storage});
 // @route GET request to api/posts
 // gets posts in descending order (by date)
 router.get('/', (req, res) => {
-
-    // TODO: sort by date_posted
     Promise.all([
         // gets all posts that are labeled LOST (i.e. found: false)
         Post.find({found: false}).sort({date_posted:-1}),
@@ -33,6 +31,26 @@ router.get('/', (req, res) => {
     .then(allItems => {
         // return allItems in the format [lost_array,found_array]
         res.json(allItems);
+    })
+    .catch(error => console.error(error));
+});
+
+// @route GET request to api/posts using user id 
+// gets losts and found posts of user specified by input user id
+// Note: to use this route in a component make a fetch call 
+// like this -> fetch("/api/posts/" + user_id)
+//         e.g. fetch("/api/posts/Mary Smith")
+router.get('/:user_id', (req, res) => {
+    // grab user id from url
+    let user_id = req.params.user_id;
+
+    Promise.all([
+        Post.find({found: false, who_created: user_id}).sort({date_posted:-1}),
+        Post.find({found: true, who_created: user_id}).sort({date_posted:-1})
+    ])
+    .then(userPosts => {
+        // return all of the user's posts in the format [lost_array,found_array]
+        res.json(userPosts);
     })
     .catch(error => console.error(error));
 });
