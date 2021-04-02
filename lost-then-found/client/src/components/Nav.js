@@ -28,7 +28,7 @@ import {NavLink} from "react-router-dom";
             </div>
             <div class="login">
                <span> 
-                    <NavLink className="link" to ="/Login"><button className="navButton">Logout</button></NavLink>
+                    <NavLink className="link" to ="/Logout"><button className="navButton">Logout</button></NavLink>
                   </span>
             </div>
             </span>

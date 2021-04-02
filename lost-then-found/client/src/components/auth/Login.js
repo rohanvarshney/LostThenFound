@@ -16,15 +16,15 @@ class Login extends Component {
   }
 
   componentDidMount() {
-    // If logged in and user navigates to Login page, should redirect them to matches
+    // If logged in and user navigates to Login page, should redirect them to logout
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/matches");
+      this.props.history.push("/logout");
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push("/matches"); // push user to matches when they login
+      this.props.history.push("/logout"); // push user to logout when they login
     }
 
     if (nextProps.errors) {

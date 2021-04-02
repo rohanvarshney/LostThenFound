@@ -20,6 +20,7 @@ import Matches from "./components/Matches";
 import Nav from "./components/Nav";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
+import Logout from "./components/auth/Logout";
 import {NavLink} from "react-router-dom";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 
@@ -80,6 +81,7 @@ function App() {
                 <Switch>
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/login" component={Login} />
+                  <Route exact path="/logout" component={Logout} />
                   <Route path="/Lost" render={() => <Lost
                   itemData={itemData}
                   setData={setItemData}/> }
