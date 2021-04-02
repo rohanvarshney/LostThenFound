@@ -69,7 +69,7 @@ class Register extends Component {
                 </p>
               </div>
               <form noValidate onSubmit={this.onSubmit}>
-                <div className="input-field col s12">
+                <div className="input-field_col_s12">
                   <input
                     onChange={this.onChange}
                     value={this.state.name}
@@ -79,11 +79,11 @@ class Register extends Component {
                     className={classnames("", {
                       invalid: errors.name
                     })}
+                    placeholder="Name"
                   />
-                  <label htmlFor="name">Name</label>
                   <span className="red-text">{errors.name}</span>
                 </div>
-                <div className="input-field col s12">
+                <div className="input-field_col_s12">
                   <input
                     onChange={this.onChange}
                     value={this.state.email}
@@ -93,11 +93,11 @@ class Register extends Component {
                     className={classnames("", {
                       invalid: errors.email
                     })}
+                    placeholder="Email"
                   />
-                  <label htmlFor="email">Email</label>
                   <span className="red-text">{errors.email}</span>
                 </div>
-                <div className="input-field col s12">
+                <div className="input-field_col_s12">
                   <input
                     onChange={this.onChange}
                     value={this.state.password}
@@ -107,11 +107,11 @@ class Register extends Component {
                     className={classnames("", {
                       invalid: errors.password
                     })}
+                    placeholder="Password"
                   />
-                  <label htmlFor="password">Password</label>
                   <span className="red-text">{errors.password}</span>
                 </div>
-                <div className="input-field col s12">
+                <div className="input-field_col_s12">
                   <input
                     onChange={this.onChange}
                     value={this.state.password2}
@@ -121,8 +121,8 @@ class Register extends Component {
                     className={classnames("", {
                       invalid: errors.password2
                     })}
+                    placeholder="Confirm Password"
                   />
-                  <label htmlFor="password2">Confirm Password</label>
                   <span className="red-text">{errors.password2}</span>
                 </div>
                 <div className="col s12" style={{ paddingLeft: "11.250px" }}>

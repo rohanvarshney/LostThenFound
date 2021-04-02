@@ -77,8 +77,11 @@ function App() {
       <Router>
         <div>
           <Nav />
+          <Switch>
+            <Route path="/About" component={About} />
+            <Route path="/Community-Guidelines" component={CommunityGuidelines} />
+            <Route path="/Contact" component={Contact} />
             <div class="tabs">
-                <Switch>
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/login" component={Login} />
                   <Route exact path="/logout" component={Logout} />
@@ -92,13 +95,15 @@ function App() {
                   setData={setItemData}/> }
                   exact
                   />
-                  <PrivateRoute exact path="/Matches" component={Matches}/>
-                  <Route path="/" component={Home}/>
-                </Switch>
+                  <PrivateRoute path="/Matches" render={() => <Matches
+                  itemData={itemData}
+                  setData={setItemData}/> }
+                  exact
+                  />
+                  <Route exact path="/" component={Home}/>
+                
             </div>
-            <div class="footer">
-              <p>About | Community Guidelines | Help </p>
-            </div>
+            </Switch>
         </div>
       </Router>
     </Provider>
