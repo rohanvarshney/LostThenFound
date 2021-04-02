@@ -5,7 +5,7 @@ import { InputGroup, InputGroupText, InputGroupAddon, Input } from 'reactstrap';
 
 const Popup = (props) => {
 
-    const userId = useSelector(state => state.auth.user.id)
+    const userId = useSelector(state => state.auth.user.id);
     const [title, setTitle] = useState('');
     const [time, setTime] = useState('');
     const [date, setDate] = useState('');

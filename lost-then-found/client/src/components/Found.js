@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { connect, useSelector } from "react-redux";
 import Post from "./Post";
 import Popup from "./Popup";
 import Filter from "./Filter";
@@ -150,6 +151,9 @@ const Found = (props) => {
         setSearchText(e.target.value);
     }
 
+    const auth = useSelector(state => state.auth);
+
+    if (auth.isAuthenticated) {
     return (
       <div>
       <div class="container">
@@ -190,6 +194,47 @@ const Found = (props) => {
     </div>
 
     );
+  } else {
+    return (
+      <div>
+      <div class="container">
+        <div id="searchPost">
+          <input onChange={event => handleSearchAction(event)} type="text" placeholder="Search by keyword..." class="searchBar"></input>
+          {/*<button type="button" id="search" onClick={handleSearchAction}>Search</button>*/}
+          <div className="filter-container">
+            <button type="button" id="filter" onClick={toggleFilter}>Filter</button>
+            {filterOpen && <Filter passFilterDate={setFilterDate} passFilterTime={setFilterTime} passTagsList={setTagsList} />}
+          </div>
+          </div>
+        <div class="flex-container">
+
+
+        {posts ? posts.map((item, idx) => (
+            <Post
+                  imgSrc={`/uploads/${item.imgSrc}`}
+                  title={item.post_title}
+                  date={item.date}
+                  time={item.time}
+                  location={item.location}
+                  description={item.description}
+              />
+            )) : <p>loading...</p>}
+
+          {visible && <Popup
+            itemState={'New Found Item'}
+            location={'Location Found'}
+            timeLabel={'Approximate time found'}
+            dateLabel={'Date found'}
+            locationLabel={'Location found'}
+            handleClose={togglePopup}
+            isFound={true}
+          />}
+        </div>
+      </div>
+    </div>
+
+    );
+  }
 }
 
 export default Found;
