@@ -98,7 +98,7 @@ function App() {
                   setData={setItemData}/> }
                   exact
                   />
-                  <PrivateRoute path="/Matches" render={() => <Matches
+                  <Route path="/Matches" render={() => <Matches
                   itemData={itemData}
                   setData={setItemData}/> }
                   exact
