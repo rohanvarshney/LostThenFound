@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, Component } from "react";
+import PropTypes from "prop-types";
+import { connect, useSelector } from "react-redux";
 import { InputGroup, InputGroupText, InputGroupAddon, Input } from 'reactstrap';
 
 const Popup = (props) => {
 
-
+    const userId = useSelector(state => state.auth.user.id);
     const [title, setTitle] = useState('');
     const [time, setTime] = useState('');
     const [date, setDate] = useState('');
@@ -11,6 +13,10 @@ const Popup = (props) => {
     const [imageSrc, setImgSrc] = useState('');
     const [description, setDescription] = useState('');
     const [tagList, setTagList] = useState('');
+
+    //useEffect(() => {
+    //    setUserName(props.state.auth.user.name);
+    //}, [props.state.auth.user.name])
 
     function handlePostButtonClick(e) {
         e.preventDefault();
@@ -30,6 +36,7 @@ const Popup = (props) => {
         // 'location' corresponds to location_lost field or current_location field, for lost posts and found posts respectively
 
         const formData = new FormData();
+        formData.append('who_created',userId);
         formData.append('found',props.isFound);
         formData.append('post_title',title);
         formData.append('time',time);
