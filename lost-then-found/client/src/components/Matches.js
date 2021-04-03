@@ -83,28 +83,33 @@ const Matches = (props) => {
 
   return (
     <div>
-    <div class="container">
-      <div id="searchPost">
-        <input type="text" placeholder="Search by keyword..." class="searchBar"></input>
-        {/*<button type="button" id="search" onClick={handleSearchAction}>Search</button>*/}
-        <button type="button" id="nothing">Empty Button</button>
+      <div class="container">
+        <div id="searchMyPosts">
+          <label for="myPosts" id="myPostsLabel">Select one of your posts:</label>
+          <select name="myPosts" id="myPosts">
+            <option value="allPosts" selected>All My Posts</option>
+            <option value="blueBottle">Blue Water Bottle</option>
+            <option value="airpods">Airpods Pro</option>
+            <option value="laText">Linear Algebra Textbook</option>
+          </select>
+          <input type="submit" value="Search" id="searchButton"/>
         </div>
-      <div class="flex-container">
+        <div class="flex-container">
 
 
-      {posts ? posts.map((item, idx) => (
-          <Post
-                imgSrc={`/uploads/${item.imgSrc}`}
-                title={item.post_title}
-                date={item.date}
-                time={item.time}
-                location={item.location}
-                description={item.description}
-            />
-          )) : <p>loading...</p>}
+        {posts ? posts.map((item, idx) => (
+            <Post
+                  imgSrc={`/uploads/${item.imgSrc}`}
+                  title={item.post_title}
+                  date={item.date}
+                  time={item.time}
+                  location={item.location}
+                  description={item.description}
+              />
+            )) : <p>loading...</p>}
+        </div>
       </div>
     </div>
-  </div>
 
   );
 }
