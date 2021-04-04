@@ -21,7 +21,7 @@ const CommunityGuidelines = () => {
                 </li>
                 <li>
                     <b>Don't hate.</b> Our platform has a pretty specific purpose, but any platform with user-to-user interaction 
-                    has the potential to be said. Generally speaking, any usage of Lost Then Found to communicate or share personal
+                    has the potential to be abused. Generally speaking, any usage of Lost Then Found to communicate or share personal
                     information isn't allowed, but we define hate speech as content that does or intends to attack, threaten, incite 
                     violence against, or dehumanize an individual or a group of individuals on the basis of protected attributes. 
                     We also do not allow content that verbally or physically threatens violence or depicts harm to an individual or a 

@@ -79,8 +79,8 @@ class Login extends Component {
                     className={classnames("", {
                       invalid: errors.email || errors.emailnotfound
                     })}
+                    placeholder="Email"
                   />
-                  <label htmlFor="email">Email</label>
                   <span className="red-text">
                     {errors.email}
                     {errors.emailnotfound}
