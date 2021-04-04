@@ -20,7 +20,7 @@ class Register extends Component {
   componentDidMount() {
     // If logged in and user navigates to Register page, should redirect them to matches
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/matches");
+      this.props.history.push("/logout");
     }
   }
 
