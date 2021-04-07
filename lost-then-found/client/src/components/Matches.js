@@ -1,9 +1,21 @@
 import React, { useState, useEffect } from 'react';
+import { connect, useSelector } from "react-redux";
+import { useHistory } from 'react-router-dom';
+import PropTypes from "prop-types";
 import Post from "./Post";
 import Popup from "./Popup";
 import Filter from "./Filter";
 
 const Matches = (props) => {
+
+  const auth = useSelector(state => state.auth);
+  const history = useHistory();
+
+  useEffect(() => {
+  	if (!auth.isAuthenticated) {
+      history.push("/login");
+    }
+  });
 
   const originalLostPosts = props.itemData[0];
   const originalFoundPosts = props.itemData[1];
@@ -114,4 +126,15 @@ const Matches = (props) => {
   );
 }
 
-export default Matches;
+Matches.propTypes = {
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(
+  mapStateToProps,
+  { }
+)(Matches);

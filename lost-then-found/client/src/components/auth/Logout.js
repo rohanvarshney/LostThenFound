@@ -9,6 +9,13 @@ class Logout extends Component {
     this.props.logoutUser();
   };
 
+  componentDidMount() {
+    // If logged out and user navigates to Logout page, should redirect them to login
+    if (!this.props.auth.isAuthenticated) {
+      this.props.history.push("/login");
+    }
+  }
+
 	render() {
 	    const { user } = this.props.auth;
 	  return (
