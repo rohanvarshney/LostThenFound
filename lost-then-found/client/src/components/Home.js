@@ -21,7 +21,7 @@ const Home = () => {
                     </p>
                 </td>
                 <td>
-                    <a class="homeHoverImg" href="/Found"> <img  src = "images/idea.svg" alt="Matches"/> </a>
+                    <a class="homeHoverImg" href="/Matches"> <img  src = "images/idea.svg" alt="Matches"/> </a>
                     <p id="homeMatchText">
                     If you're checking back in on a post you made recently, head on over to the <b>Matches</b> tab.
                     </p>
