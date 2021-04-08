@@ -8,6 +8,9 @@ import Filter from "./Filter";
 
 const Matches = (props) => {
 
+  console.log(props.auth.user);
+  const user = props.auth.user;
+
   const auth = useSelector(state => state.auth);
   const history = useHistory();
 
@@ -19,10 +22,11 @@ const Matches = (props) => {
 
   const originalLostPosts = props.itemData[0];
   const originalFoundPosts = props.itemData[1];
-  console.log(originalLostPosts);
-  console.log(originalFoundPosts);
+  // console.log(originalLostPosts);
+  // console.log(originalFoundPosts);
 
   var posts = originalFoundPosts.concat(originalLostPosts);
+  console.log(posts);
 
   const [lostPosts, updateLostPosts] = useState(props.itemData[0]);
   const [foundPosts, updateFoundPosts] = useState(props.itemData[1]);
@@ -84,6 +88,7 @@ const Matches = (props) => {
   }
   console.log(posts.length);
 
+  /*
   for (let a = 0; a < posts.length - 1; a++) {
     for (let b = a + 1; b < posts.length; b++) {
       var post1 = posts[a];
@@ -92,6 +97,51 @@ const Matches = (props) => {
       console.log(a + ", " + b + ": " + match);
     }
   }
+  */
+
+  function matchesOfPosts(allPosts) {
+    var matchedPosts = [];
+
+    for (let a = 0; a < allPosts.length - 1; a++) {
+      for (let b = a + 1; b < allPosts.length; b++) {
+        var post1 = allPosts[a];
+        //console.log(post1.who_created);
+        var post2 = allPosts[b];
+        const match = isMatch(post1, post2);
+        // console.log(a + ", " + b + ": " + match);
+        if (match) {
+          console.log(a + ", " + b + ": " + match);
+          var postOfUser = null;
+          var otherPost = null;
+          if (post1.who_created === user.name) {
+            postOfUser = post1;
+            otherPost = post2;
+          }
+          if (post2.who_created === user.name) {
+            postOfUser = post2;
+            otherPost = post1;
+          }
+          if (postOfUser) {
+            console.log("We have an official match!");
+            matchedPosts.push(otherPost);
+          }
+
+        }
+      // End of inner for loop
+      }
+    // End of outer for loop
+    }
+    console.log("Final Matches: " + matchedPosts);
+    // End of method
+    return matchedPosts;
+  }
+
+  var matchedPosts = matchesOfPosts(posts);
+
+  // TODO: REMOVE THIS ACCORDINGLY.
+  posts = matchedPosts;
+
+
 
   return (
     <div>
