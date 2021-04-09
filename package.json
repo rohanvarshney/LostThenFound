@@ -6,9 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cd lost-then-found && cd server && node connect.js",
+    "run-root": "npm install --prefix lost-then-found",
     "run-client": "npm install --prefix lost-then-found/client && npm install -g react-scripts && npm run build --prefix lost-then-found/client",
-    "run-server": "NPM_CONFIG_PRODUCTION=false",
-    "heroku-postbuild": "npm run run-client && npm run run-server"
+    "run-server": "NPM_CONFIG_PRODUCTION=false npm install --prefix lost-then-found/server",
+    "heroku-postbuild": "npm run run-root && npm run run-client && npm run run-server"
   },
   "repository": {
     "type": "git",
