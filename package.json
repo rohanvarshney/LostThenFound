@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cd lost-then-found && cd server && node connect.js",
-    "run-client": "npm install --prefix ../client && npm run build --prefix ../client",
+    "run-client": "npm install --prefix lost-then-found/client && npm run build --prefix lost-then-found/client",
     "run-server": "NPM_CONFIG_PRODUCTION=false",
     "heroku-postbuild": "npm run-client && npm run-server"
   },
