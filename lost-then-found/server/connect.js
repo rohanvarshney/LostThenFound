@@ -2,6 +2,7 @@ const { MongoClient } = require("mongodb");
 
 const express = require('express');
 const posts = require('./routes/api/posts');
+const emails = require('./routes/api/emails');
 const mongoose = require('mongoose');
 const bodyParser = require("body-parser");
 const passport = require("passport");
@@ -155,6 +156,8 @@ app.use("/api/users", users);
 // Post Routes
 // Description: Any request that goes to /api/posts will go to the 'posts' api file
 app.use('/api/posts', posts);
+
+app.use('/api/emails', emails);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server started on port ${port}`));
