@@ -9,7 +9,6 @@ import Filter from "./Filter";
 const Matches = (props) => {
 
   console.log(props.auth.user);
-  const user = props.auth.user;
 
   const auth = useSelector(state => state.auth);
   const history = useHistory();
@@ -25,8 +24,10 @@ const Matches = (props) => {
   // console.log(originalLostPosts);
   // console.log(originalFoundPosts);
 
-  var posts = originalFoundPosts.concat(originalLostPosts);
-  console.log(posts);
+  var originalPosts = originalFoundPosts.concat(originalLostPosts);
+  console.log(originalPosts);
+
+  var posts = originalPosts;
 
   const [lostPosts, updateLostPosts] = useState(props.itemData[0]);
   const [foundPosts, updateFoundPosts] = useState(props.itemData[1]);
@@ -40,6 +41,9 @@ const Matches = (props) => {
       })
       .catch(error => console.error(error));
   }
+
+  console.log("Total Items: " + posts.length);
+
 
   function isMatch(myPost, otherPost) {
     // TODO: CHECK FOR NULL VALUE COMPARISONS, EMPTY LISTS, ETC.
@@ -86,7 +90,6 @@ const Matches = (props) => {
 
     return false;
   }
-  console.log(posts.length);
 
   /*
   for (let a = 0; a < posts.length - 1; a++) {
@@ -101,6 +104,8 @@ const Matches = (props) => {
 
   function matchesOfPosts(allPosts) {
     var matchedPosts = [];
+    var user = props.auth.user;
+    console.log(user);
 
     for (let a = 0; a < allPosts.length - 1; a++) {
       for (let b = a + 1; b < allPosts.length; b++) {
@@ -131,16 +136,43 @@ const Matches = (props) => {
       }
     // End of outer for loop
     }
-    console.log("Final Matches: " + matchedPosts);
     // End of method
     return matchedPosts;
   }
 
-  var matchedPosts = matchesOfPosts(posts);
 
-  // TODO: REMOVE THIS ACCORDINGLY.
-  posts = matchedPosts;
+  function getMyPosts(allPosts) {
+    var user = props.auth.user;
+    var username = user.name;
 
+    var myPosts = [];
+    for (let a = 0; a < allPosts.length; a++) {
+      var post = allPosts[a];
+      if (post.who_created === username) {
+        console.log(post);
+        myPosts.push(post);
+      }
+    }
+    return myPosts;
+  }
+
+
+
+  // All My Posts
+  var user_posts = getMyPosts(posts);
+  posts = user_posts;
+
+
+
+  let postSelectList = user_posts.length > 0
+      && user_posts.map(
+        (item, i) => {
+          return (
+            <option key={i} value={item.post_title}>{item.post_title}</option>
+          )
+        }, this
+      );
+  //
 
 
   return (
@@ -150,9 +182,7 @@ const Matches = (props) => {
           <label for="myPosts" id="myPostsLabel">Select one of your posts:</label>
           <select name="myPosts" id="myPosts">
             <option value="allPosts" selected>All My Posts</option>
-            <option value="blueBottle">Blue Water Bottle</option>
-            <option value="airpods">Airpods Pro</option>
-            <option value="laText">Linear Algebra Textbook</option>
+            {postSelectList}
           </select>
           <input type="submit" value="Search" id="searchButton"/>
         </div>
