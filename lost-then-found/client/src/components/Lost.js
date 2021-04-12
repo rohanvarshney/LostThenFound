@@ -151,6 +151,42 @@ const Lost = (props) => {
         setSearchText(e.target.value);
     }
 
+    const convertTime = (d) => {
+
+      if (d) {
+        var time = d; // your input
+        time = time.split(':'); // convert to array
+  
+        var hours = Number(time[0]);
+        var minutes = Number(time[1]);
+  
+        // calculate
+        var timeValue;
+  
+        // get hours
+        if (hours > 0 && hours <= 12) {
+          timeValue= "" + hours;
+        } else if (hours > 12) {
+          timeValue= "" + (hours - 12);
+        } else if (hours == 0) {
+          timeValue= "12";
+        }
+        
+        // get minutes
+        timeValue += (minutes < 10) ? ":0" + minutes : ":" + minutes; 
+  
+        // get AM/PM
+        timeValue += (hours >= 12) ? " P.M." : " A.M.";  
+  
+        // show
+        console.log(timeValue);
+        return timeValue;
+      } else {
+        return "";
+      }
+    };
+  
+
     const auth = useSelector(state => state.auth);
 
     if (auth.isAuthenticated) {
@@ -173,7 +209,7 @@ const Lost = (props) => {
                   imgSrc={`/uploads/${item.imgSrc}`}
                   title={item.post_title}
                   date={item.date}
-                  time={item.time}
+                  time={convertTime(item.time)}
                   location={item.location}
                   description={item.description}
               />
@@ -213,7 +249,7 @@ const Lost = (props) => {
                   imgSrc={`/uploads/${item.imgSrc}`}
                   title={item.post_title}
                   date={item.date}
-                  time={item.time}
+                  time={convertTime(item.time)}
                   location={item.location}
                   description={item.description}
               />
