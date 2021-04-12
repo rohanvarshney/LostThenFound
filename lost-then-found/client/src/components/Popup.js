@@ -57,6 +57,7 @@ const Popup = (props) => {
         .then(response => response.json())
         .then(data => {
           console.log('Success:', data);
+          props.handleClose();
         })
         .catch((error) => {
           console.error('Error:', error);
