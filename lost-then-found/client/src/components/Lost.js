@@ -151,6 +151,14 @@ const Lost = (props) => {
         setSearchText(e.target.value);
     }
 
+    useEffect(() => {
+      fetchItemData()
+      .then(allPosts => {
+          updatePosts(allPosts[0]);
+      })
+      .catch((err) => console.log(err))},
+      [visible]);
+
     const auth = useSelector(state => state.auth);
 
     if (auth.isAuthenticated) {
