@@ -36,7 +36,7 @@ const Found = (props) => {
     var [filterDate] = useState("");
     var [filterTime] = useState("");
     var [tagsList] = useState([]);
-    var [a, b, c] = [false, false, false]
+    var [a, b, c] = [false, false, false];
 
     const setFilterDate = (fd) => {
       filterDate = fd;

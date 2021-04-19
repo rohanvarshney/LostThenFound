@@ -36,7 +36,7 @@ const Lost = (props) => {
     var [filterDate] = useState("");
     var [filterTime] = useState("");
     var [tagsList] = useState([]);
-    var [a, b, c] = [false, false, false]
+    var [a, b, c] = [false, false, false];
 
     const setFilterDate = (fd) => {
       filterDate = fd;
@@ -212,7 +212,7 @@ const Lost = (props) => {
             <button type="button" id="filter" onClick={toggleFilter}>Filter</button>
             {filterOpen && <Filter passFilterDate={setFilterDate} passFilterTime={setFilterTime} passTagsList={setTagsList} />}
           </div>
-          
+
           </div>
         <div class="flex-container">
 
