@@ -129,11 +129,16 @@ const Matches = (props) => {
   function getMyPosts(allPosts) {
     var user = props.auth.user;
     var username = user.name;
+    var userid = user.id;
 
     var myPosts = [];
     for (let a = 0; a < allPosts.length; a++) {
       var post = allPosts[a];
       if (post.who_created === username) {
+        console.log(post);
+        myPosts.push(post);
+      }
+      if (post.who_created === userid) {
         console.log(post);
         myPosts.push(post);
       }
