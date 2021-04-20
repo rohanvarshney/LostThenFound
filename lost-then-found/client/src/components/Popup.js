@@ -86,6 +86,7 @@ const Popup = (props) => {
                             <input onChange={event => setLocation(event.target.value)} list="locations" name="loc" id="loc" className="postInput2" id="locInput"></input>
                             <datalist id="locations">
                                 <option value="Clough Undergraduate Learning Commons"></option>
+                                <option value="Tech Green"></option>
                                 <option value="Klaus College of Computing"></option>
                                 <option value="Student Center"></option>
                                 <option value="Howey Physics Building"></option>
