@@ -185,6 +185,7 @@ const Found = (props) => {
                   date={item.date}
                   time={item.time}
                   location={item.location}
+                  who_created={item.who_created}
                   description={item.description}
               />
             )) : <p>loading...</p>}
