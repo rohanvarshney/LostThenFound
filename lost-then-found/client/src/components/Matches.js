@@ -31,6 +31,7 @@ const Matches = (props) => {
   // updatePosts(user_posts);
 
   const [posts, updatePosts] = useState(user_posts);
+  const [matchLabel, updateLabel] = useState("No matches")
 
   const [lostPosts, updateLostPosts] = useState(props.itemData[0]);
   const [foundPosts, updateFoundPosts] = useState(props.itemData[1]);
@@ -46,7 +47,6 @@ const Matches = (props) => {
   }
 
   console.log("Total Items: " + posts.length);
-
 
 
 
@@ -69,6 +69,7 @@ const Matches = (props) => {
         }
     }
     return false;
+
 }
 
 
@@ -204,6 +205,8 @@ const Matches = (props) => {
       var matchedPosts = matchesOfSpecifiedPost(postItemTitle, user_posts)
       updatePosts(matchedPosts);
       console.log(posts);
+      
+      updateLabel(posts.length + " " + ((posts.length == 1) ? ' match' : ' matches') + " for " + postItemTitle);
     }
 
 
@@ -230,9 +233,10 @@ const Matches = (props) => {
             <option value="allPosts" selected>All My Posts</option>
             {postSelectList}
           </select>
+          <p id="matchlabel">{matchLabel}</p>
         </div>
         <div class="flex-container">
-
+          
 
         {posts ? posts.map((item, idx) => (
             <Post
