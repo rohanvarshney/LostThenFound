@@ -249,7 +249,9 @@ const Matches = (props) => {
                   date={item.date}
                   time={item.time}
                   location={item.location}
+                  who_created={item.who_created}
                   description={item.description}
+                  itemId={item._id}
               />
             )) : <p>loading...</p>}
         </div>
