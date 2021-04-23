@@ -101,6 +101,32 @@ router.post("/login", (req, res) => {
   });
 });
 
+// @route GET request to api/users/:user_id
+// @desc GET a user by user_id
+// How to use: call fetch("api/users/:user_id")
+router.get('/:user_id', (req, res) => {
+  // the user id passed into the fetch call
+  let user_id = req.params.user_id;
+  
+  User.findById(user_id)
+    .then(item => res.json(item))
+    .catch(err => console.log(err));
+});
+
+
+// @route GET request to api/users/email/:user_id
+// @desc GET a user by user_id
+// How to use: call fetch("api/users/email/:user_id")
+router.get('/email/:user_id', (req, res) => {
+  // the user id passed into the fetch call
+  let user_id = req.params.user_id;
+  
+  User.findById(user_id)
+    .then(item => res.json(item.email))
+    .catch(err => console.log(err));
+});
+
+
 /* OLD: GET users listing. 
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');

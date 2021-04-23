@@ -9,8 +9,8 @@ router.post('/', upload.fields([]), (req,res) => {
 
     let messageBody = ``;
 
-    if (req.body.contactus == 'true') {
-        // request was sent through contactus form
+    if (req.body.contactus == true) {
+        // request was intended for the contactus form
         messageBody = `
         <p>Feedback: </p>
         <ul>
@@ -44,7 +44,7 @@ router.post('/', upload.fields([]), (req,res) => {
     
         // Message
         let message = {};
-        if (req.body.contactus == 'true') {
+        if (req.body.contactus == true) {
             message = {
                 from: req.body.name + '<lostthenfoundproduct@gmail.com>',
                 to: "lostthenfoundproduct@gmail.com",             
@@ -53,7 +53,7 @@ router.post('/', upload.fields([]), (req,res) => {
             };
         } else {
             message = {
-                from: req.body.name + '<lostthenfoundproduct@gmail.com>', // ThinkDone: specify receiver's name & receiver's email here
+                from: req.body.name + '<lostthenfoundproduct@gmail.com>',
                 to: "lostthenfoundproduct@gmail.com",                     // TODO: specify receiver's email here using getEmail(req.body.to) (getEmail(user.id) doesn't exist currently)
                 subject: "A User on LostThenFound messaged you",
                 html: messageBody
