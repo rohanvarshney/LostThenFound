@@ -4,7 +4,7 @@ const Home = () => {
     return (
         <>
         <div id="homeIntro">
-            <img src="images/LF.GIF" width="200" alt="FullLogo" />
+            <img src="images/LF.gif" width="200" alt="FullLogo" />
             <h3>Welcome to <b>Lost then Found</b>, a digital space to find your stuff.</h3>
 
             <tr class="homeHovers">
