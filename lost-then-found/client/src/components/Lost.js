@@ -36,7 +36,7 @@ const Lost = (props) => {
     var [filterDate] = useState("");
     var [filterTime] = useState("");
     var [tagsList] = useState([]);
-    var [a, b, c] = [false, false, false]
+    var [a, b, c] = [false, false, false];
 
     const setFilterDate = (fd) => {
       filterDate = fd;
@@ -151,6 +151,14 @@ const Lost = (props) => {
         setSearchText(e.target.value);
     }
 
+    useEffect(() => {
+      fetchItemData()
+      .then(allPosts => {
+          updatePosts(allPosts[0]);
+      })
+      .catch((err) => console.log(err))},
+      [visible]);
+
     const auth = useSelector(state => state.auth);
 
     if (auth.isAuthenticated) {
@@ -175,6 +183,7 @@ const Lost = (props) => {
                   date={item.date}
                   time={item.time}
                   location={item.location}
+                  who_created={item.who_created}
                   description={item.description}
               />
             )) : <p>loading...</p>}
@@ -204,7 +213,7 @@ const Lost = (props) => {
             <button type="button" id="filter" onClick={toggleFilter}>Filter</button>
             {filterOpen && <Filter passFilterDate={setFilterDate} passFilterTime={setFilterTime} passTagsList={setTagsList} />}
           </div>
-          
+
           </div>
         <div class="flex-container">
 

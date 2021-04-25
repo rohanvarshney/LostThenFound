@@ -43,6 +43,8 @@ const Post = (props) => {
             date={props.date}
             location={props.location}
             description={props.description}
+            who_created={props.who_created}
+            itemId={props.itemId}
             handleClose={togglePopup}
           />}
 

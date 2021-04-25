@@ -16,7 +16,9 @@ module.exports = function validateRegisterInput(data) {
     errors.email = "Email field is required";
   } else if (!Validator.isEmail(data.email)) {
     errors.email = "Email is invalid";
-  }
+  } else if (!Validator.contains(data.email, "gatech.edu")) {
+    errors.email = "Email must be a gatech email";
+  } 
 // Password checks
   if (Validator.isEmpty(data.password)) {
     errors.password = "Password field is required";

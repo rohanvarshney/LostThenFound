@@ -36,7 +36,7 @@ const Found = (props) => {
     var [filterDate] = useState("");
     var [filterTime] = useState("");
     var [tagsList] = useState([]);
-    var [a, b, c] = [false, false, false]
+    var [a, b, c] = [false, false, false];
 
     const setFilterDate = (fd) => {
       filterDate = fd;
@@ -151,6 +151,15 @@ const Found = (props) => {
         setSearchText(e.target.value);
     }
 
+
+    useEffect(() => {
+      fetchItemData()
+      .then(allPosts => {
+          updatePosts(allPosts[1]);
+      })
+      .catch((err) => console.log(err))},
+      [visible]);
+
     const auth = useSelector(state => state.auth);
 
     if (auth.isAuthenticated) {
@@ -176,6 +185,7 @@ const Found = (props) => {
                   date={item.date}
                   time={item.time}
                   location={item.location}
+                  who_created={item.who_created}
                   description={item.description}
               />
             )) : <p>loading...</p>}

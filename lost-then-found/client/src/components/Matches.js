@@ -9,7 +9,6 @@ import Filter from "./Filter";
 const Matches = (props) => {
 
   console.log(props.auth.user);
-  const user = props.auth.user;
 
   const auth = useSelector(state => state.auth);
   const history = useHistory();
@@ -25,8 +24,14 @@ const Matches = (props) => {
   // console.log(originalLostPosts);
   // console.log(originalFoundPosts);
 
-  var posts = originalFoundPosts.concat(originalLostPosts);
-  console.log(posts);
+  var originalPosts = originalFoundPosts.concat(originalLostPosts);
+  console.log(originalPosts);
+
+  var user_posts = getMyPosts(originalPosts);
+  // updatePosts(user_posts);
+
+  const [posts, updatePosts] = useState(user_posts);
+  const [matchLabel, updateLabel] = useState("No matches")
 
   const [lostPosts, updateLostPosts] = useState(props.itemData[0]);
   const [foundPosts, updateFoundPosts] = useState(props.itemData[1]);
@@ -41,6 +46,33 @@ const Matches = (props) => {
       .catch(error => console.error(error));
   }
 
+  console.log("Total Items: " + posts.length);
+
+
+
+  function hasWordMatch(a, b, case_sensitive) {
+    if (case_sensitive !== true) {
+        a = a.toLowerCase();
+        b = b.toLowerCase();
+    }
+    var a_parts = a.split(' ');
+    var b_parts = b.split(' ');
+    var a_length = a_parts.length;
+    var b_length = b_parts.length;
+    var i_a, i_b;
+
+    for (i_a = 0; i_a < a_length; i_a += 1) {
+        for (i_b = 0; i_b < b_length; i_b += 1) {
+            if (a_parts[i_a] === b_parts[i_b]) {
+                return true;
+            }
+        }
+    }
+    return false;
+
+}
+
+
   function isMatch(myPost, otherPost) {
     // TODO: CHECK FOR NULL VALUE COMPARISONS, EMPTY LISTS, ETC.
     // console.log(myPost);
@@ -48,98 +80,147 @@ const Matches = (props) => {
     /*
     take two posts, determine if match:
       1. search of all things that have any of the tagsList
-      2. filter for anything not before the time of the allPosts
-      3. search of all things that have any similarity to post_title
+      2. search of all things that have any similarity to post_title
       all conjunctions of OR (aka it is in the matches page if it fulfills any of the above conditions)
     */
+
     // same post isn't match
-    if (myPost === otherPost) return false;
-    if (!myPost || !otherPost) return false;
+    if (myPost === otherPost) {
+      console.log("Same post!");
+      return false;
+    }
+    // either post is null or empty or undefined
+    if (!myPost || !otherPost) {
+      console.log("Post is empty or undefined!");
+      return false;
+    }
 
-    // found item to lost item or vice versa
-    if (!myPost.found != otherPost.found) return false;
-
-    // TODO: Verify the above two conditions work.
+    // found item to lost item or vice versa is needed
+    if (myPost.found == otherPost.found) {
+      console.log("Not opposite statuses!");
+      return false;
+    }
 
     // 1
     const otherPostTags = otherPost.tags;
     for (var tag in myPost.tags) {
-      if (otherPostTags.includes(tag)) {
-        return true;
+      if (tag === "" || tag === '0') continue;
+      for (var tag2 in otherPostTags) {
+        if (tag2 === "" || tag2 === '0') continue;
+        if (tag === tag2) {
+          console.log(tag + " === " + tag2 + "?");
+          return true;
+        }
       }
     }
 
     //2
-    if (otherPost.date_posted > myPost.date_posted) {
-      return true;
-    }
-
-    //3
     // TODO: Make this better
-    var otherWords = otherPost.post_title.split(" ");
-    var myWords = myPost.post_title.split(" ");
-    for (var word in otherWords) {
-      if (myWords.includes(word)) {
-        return true;
-      }
+    if (hasWordMatch(otherPost.post_title, myPost.post_title)) {
+      console.log("Similar titles!");
+      return true;
     }
 
     return false;
   }
-  console.log(posts.length);
 
-  /*
-  for (let a = 0; a < posts.length - 1; a++) {
-    for (let b = a + 1; b < posts.length; b++) {
-      var post1 = posts[a];
-      var post2 = posts[b];
-      const match = isMatch(post1, post2);
-      console.log(a + ", " + b + ": " + match);
-    }
-  }
-  */
 
-  function matchesOfPosts(allPosts) {
+  function matchesOfSpecifiedPost(postTitle, userPosts) {
     var matchedPosts = [];
+    var user = props.auth.user;
+    console.log(user);
+    var specifiedPost = null;
 
-    for (let a = 0; a < allPosts.length - 1; a++) {
-      for (let b = a + 1; b < allPosts.length; b++) {
-        var post1 = allPosts[a];
-        //console.log(post1.who_created);
-        var post2 = allPosts[b];
-        const match = isMatch(post1, post2);
-        // console.log(a + ", " + b + ": " + match);
-        if (match) {
-          console.log(a + ", " + b + ": " + match);
-          var postOfUser = null;
-          var otherPost = null;
-          if (post1.who_created === user.name) {
-            postOfUser = post1;
-            otherPost = post2;
-          }
-          if (post2.who_created === user.name) {
-            postOfUser = post2;
-            otherPost = post1;
-          }
-          if (postOfUser) {
-            console.log("We have an official match!");
-            matchedPosts.push(otherPost);
-          }
-
-        }
-      // End of inner for loop
+    for (let a = 0; a < userPosts.length; a++) {
+      var postInQuestion = userPosts[a];
+      console.log("Title: " + postInQuestion.post_title);
+      if (postInQuestion.post_title === postTitle) {
+        specifiedPost = postInQuestion;
+        break;
       }
-    // End of outer for loop
     }
-    console.log("Final Matches: " + matchedPosts);
+
+    console.log(specifiedPost);
+    if (specifiedPost == null) {
+      return matchedPosts;
+    }
+
+
+    for (let a = 0; a < originalPosts.length; a++) {
+      var possibleMatchPost = originalPosts[a];
+      var match = isMatch(specifiedPost, possibleMatchPost);
+      console.log(specifiedPost.post_title + ", " + possibleMatchPost.post_title + " = " + match);
+      if (match) {
+        matchedPosts.push(possibleMatchPost);
+      }
+
+    }
+
+
+
+
+
     // End of method
     return matchedPosts;
   }
 
-  var matchedPosts = matchesOfPosts(posts);
 
-  // TODO: REMOVE THIS ACCORDINGLY.
-  posts = matchedPosts;
+  function getMyPosts(allPosts) {
+    var user = props.auth.user;
+    var username = user.name;
+    var userid = user.id;
+
+    var myPosts = [];
+    for (let a = 0; a < allPosts.length; a++) {
+      var post = allPosts[a];
+      if (post.who_created === username) {
+        console.log(post);
+        myPosts.push(post);
+      }
+      if (post.who_created === userid) {
+        console.log(post);
+        myPosts.push(post);
+      }
+    }
+    return myPosts;
+  }
+
+
+  function handleChange(e) {
+    if (e.target.value === "allPosts") {
+      var user_posts = getMyPosts(originalPosts);
+      updatePosts(user_posts);
+      let postSelectList = user_posts.length > 0
+          && user_posts.map(
+            (item, i) => {
+              return (
+                <option key={i} value={item.post_title}>{item.post_title}</option>
+              )
+            }, this
+          );
+    } else {
+      const postItemTitle = e.target.value;
+      console.log(postItemTitle);
+      var user_posts = getMyPosts(originalPosts);
+      var matchedPosts = matchesOfSpecifiedPost(postItemTitle, user_posts)
+      updatePosts(matchedPosts);
+      console.log(posts);
+      
+      updateLabel(posts.length + " " + ((posts.length == 1) ? ' match' : ' matches') + " for " + postItemTitle);
+    }
+
+
+
+  }
+
+  let postSelectList = user_posts.length > 0
+      && user_posts.map(
+        (item, i) => {
+          return (
+            <option key={i} value={item.post_title}>{item.post_title}</option>
+          )
+        }, this
+      );
 
 
 
@@ -148,16 +229,14 @@ const Matches = (props) => {
       <div class="container">
         <div id="searchMyPosts">
           <label for="myPosts" id="myPostsLabel">Select one of your posts:</label>
-          <select name="myPosts" id="myPosts">
+          <select name="myPosts" id="myPosts" onInput={handleChange}>
             <option value="allPosts" selected>All My Posts</option>
-            <option value="blueBottle">Blue Water Bottle</option>
-            <option value="airpods">Airpods Pro</option>
-            <option value="laText">Linear Algebra Textbook</option>
+            {postSelectList}
           </select>
-          <input type="submit" value="Search" id="searchButton"/>
+          <p id="matchlabel">{matchLabel}</p>
         </div>
         <div class="flex-container">
-
+          
 
         {posts ? posts.map((item, idx) => (
             <Post
@@ -166,7 +245,9 @@ const Matches = (props) => {
                   date={item.date}
                   time={item.time}
                   location={item.location}
+                  who_created={item.who_created}
                   description={item.description}
+                  itemId={item._id}
               />
             )) : <p>loading...</p>}
         </div>
