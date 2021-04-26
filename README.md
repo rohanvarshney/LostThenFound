@@ -1,57 +1,27 @@
 # LostThenFound
 
-Release Notes
-![image](https://user-images.githubusercontent.com/32021608/116136702-a483a080-a6a0-11eb-93b1-7ce9ea3e2f1a.png)
 
-Release Notes version LostThenFound v2
-NEW FEATURES
-     Added optimized matching algorithm to match a person's posts with other users' post.
-     Added 'Contact Us' Form using Node Mailer module.
-     Added restrictions on user account creations (only allow registration of users with @gatech.edu emails)
-     Added 'About Us' and 'Community Guidelines' pages.
-     User account passwords are hashed using bcrypt.
+**Introduction**
 
-BUG FIXES
-     Successful post creation in "Make a Post" dialog automatically closes the popup and refreshes the posts page.
-     Making a new post without a selected image provides a default image to the post.
-     Making a new post with an empty field defaults that field to "None".
-     
-KNOWN BUGS
-     Tag's input is improperly labeled as 'Location' in the Filter form.
-     A post tag's delete button is a text element that says 'close' rather than an exit icon.
-     Emails sent with the 'Contact Us' form do not tell the user that their post successful.
-     
-     
-![image](https://user-images.githubusercontent.com/32021608/116136686-9df52900-a6a0-11eb-91ac-60bc7d42bd5d.png)
+Colleges & universities and their students will buy our lost-and-found software solution because of a need for a consolidated database of lost items in different buildings and ease-of- search for people with lost items. Too often have college students gone through the negative experience of frantically searching for their lost possessions from building to building to no avail, resulting in wasted time and unneeded stress. Our product will attempt to solve these issues by creating a solution to minimize time and stress expenditure in the lost and found process: Lost then Found- easier to find, and easier to return.
+
+**Problem**
+
+In the lives of busy college students, misplacing items is a nuisance. The average American loses 2.5 days each year searching for misplaced items, and people in the United States collectively spend an average of 2.7 billion dollars replacing lost items annually. Research also shows that there are many commonly lost items that people are willing to spend more that 15 minutes searching for, including keys, wallets, umbrellas, drivers' licenses, and credit/debit cards. As a result of time spent searching, 60% of Americans have been late to work or school and 49% claimed to have missed an important meeting. Although this is a universal issue, evidence has shown that it is especially pertinent to college students. Millennials tend to lose items twice as often as those of the Baby Boomer generation, and three times as often as those in Generation X. Furthermore, many of the issues that plague college students today, such as fatigue, stress, depression, ADHD, and multitasking, can increase one’s likelihood to accidentally misplace items. The wasted time and money spent on misplaced items can be a big burden to the 48.4% of students who feel that they don’t have enough time in the day to complete their schoolwork and 13 million students who rely on financial aid.
 
 
+**Solution**
 
-Install Information
-![image](https://user-images.githubusercontent.com/32021608/116136718-ab121800-a6a0-11eb-98e1-43fc6533e70b.png)
+To solve the common issue of misplaced items on college campuses, we have developed Lost then Found: a consolidated lost and found solution that allows people to quickly and easily find items they have lost and return items they have found. Our one-stop, campus- wide solution offers two-way posting and an automatic post matching algorithm to connect people who have lost their items to those who have found them. It gives students a much higher likelihood of finding their item without ever having to physically search for it at all.
 
-PRE-REQUISITES
-       You must have NodeJS 15.14.0 installed and configured before proceeding. 
-DEPENDENCIES
-       Required dependencies are automatically installed in INSTALLATION step (specified in the project's package.json file) 
-DOWNLOAD
-       Clone this repository: https://github.com/rohanvarshney/LostThenFound 
-BUILD
-       No build necessary for this app.  The downloaded LostThenFound reposityory contains all project files.
-INSTALLATION
-       In terminal, switch to the /LostThenFound/lost-then-found root directory and run the command: npm install
-       (automatically installs any dependencies specified in the projects package.json file)
-RUNNING APPLICATION
-       In the /LostThenFound/lost-then-found directory run the following command: npm run dev 
-Troubleshooting
-       Error Code: ERRCONNREFUSED
-            - Make sure you are only running one instance of npm run dev; the command will fail if there is an instance 
-              already running.
-      Error Code: Module_not_found
-            - Run the command npm install in LostThenFound/lost-then-found to get the projects latest dependencies
-            - Run the command npm i <module-name-here> where <module-name-here> is the name of the module not found.
+**Ethical Considerations**
 
-        
-              
+Our product, a lost-and-found solution that intends to optimize the reclamation of misplaced personal items, is the subject of many potential ethical problems. Concerns around privacy, accessibility, legitimacy of identity, and theft must be handled and addressed pragmatically since these are points many of our users may find issue with based on the intrinsic use of identity in the product.
+The existing solution to this problem space, the GT Lost & Found Facebook page, is ethically flawed in that it affords no privacy to users. Facebook doesn’t anonymize user location data, despite a documented capability to do just that.2 If a user posts where and when they lost an item, for example, they may unintentionally expose their whereabouts to bad actors. Furthermore, their data could be extracted by third parties. A survey regarding the privacy of
+2 Songpon Teerakanok, "Preserving User Anonymity in Context-Aware Location-Based Services: A Proposed Framework," ETRI Journal 35, no. 3 (2013): |PAGE|, doi:10.4218/etrij.13.0112.0327) business information systems revealed that “60 percent [of users] express concerns about companies selling their information to third-parties.”3 Our solution operates on personal data from users: contact information, personal belongings, and dated records of their whereabouts. We must be mindful of the utilization and storage of this information, and furthermore our users must be made aware of our data policies and practices. Our application will therefore create a double-blind environment that protects users’ information until all pertinent parties have consented to further exposure.
+Our product is tailored to college campus communities and must accordingly reflect their diversity through a focus on accessibility. Users range greatly in the age, socioeconomic status, and ability.4 We therefore want to respect and follow Georgia Tech’s dedication to the Web Content Accessibility Guidelines5, as listed in Georgia Tech’s accessibility policy. We especially hope to address the WCAG 2 guidelines of maximizing the traits of perceivability and operability so that our solution will emphasize familiarity in design and consistency in function to guide all users through their experience.
 
-![image](https://user-images.githubusercontent.com/32021608/116136730-ae0d0880-a6a0-11eb-94ab-5944edb575d4.png)
+Finally, our solution must be conscientious of the possibility of identity fraud and other forms of nefarious use. There may be bad actors who want to abuse our solution to claim possessions that are not their own, monetize off publicized user data and contact information, or cause intentional discomfort by lying and trolling. Lost-and-found systems on other campuses use a process which involves the finder signing their name and date when claiming a lost item.6 Criminal law states that “to avoid stealing another person’s property it is best for a finder to hand in a lost item to police or management who will deem the item abandoned after a specific period of time.”7 These concerns related to physical lost-and-found spaces transfer to a digital space. Since there is still a risk of the finder keeping a lost item before turning it in, we can address this by letting the user know the campus policy on returning lost items when using the application through banners and intermittent prompts. We therefore will ensure our product is active in neutralizing false claims, users, and activity that would damage the integrity of the community our application creates.
+
+
 
