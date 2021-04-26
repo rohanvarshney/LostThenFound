@@ -4,16 +4,28 @@ import Details from "./Details";
 
 const Post = (props) => {
 
+  var closeClicked = false;
   // state management for New Post popup box
-  const [visible, setVisible] = useState(false); // default set to hidden
+  var [visible, setVisible] = useState(false); // default set to hidden
 
   // handler for toggling state of new post button
-  const togglePopup = (d) => {
-    setVisible(!visible);
-  };
+  function open() {
+    if (closeClicked) {
+      return;
+    }
+    setVisible(true);
+    console.log("open");
+  }
+
+  function close() {
+    setVisible(false);
+    closeClicked = true;
+    console.log("close");
+    console.log("visible: " + visible);
+  }
 
     return (
-        <div class="post" onClick={togglePopup}>
+        <div class="post" onClick={() => open()}>
           <img class="postImg"
             src={props.imgSrc} 
             alt='something'
@@ -45,7 +57,7 @@ const Post = (props) => {
             description={props.description}
             who_created={props.who_created}
             itemId={props.itemId}
-            handleClose={togglePopup}
+            handleClose={() => close()}
           />}
 
         </div>

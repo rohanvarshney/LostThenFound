@@ -30,6 +30,12 @@ const Details = (props) => {
 
     const [dropoffLocation, setDropoffLocation] = useState('');
 
+    function nothing() {
+        return;
+    }
+
+    const [emailSent, setEmailSent] = useState(false);
+
     function handleEmailButtonClick(e) {
         e.preventDefault();
 
@@ -59,6 +65,8 @@ const Details = (props) => {
         .catch((error) => {
             console.error('Error:', error);
         });
+
+        setEmailSent(true);
     };
 
     if (auth.isAuthenticated && auth.user.id == props.who_created) {
@@ -133,8 +141,8 @@ const Details = (props) => {
                         </div>
 
                         <div id="contactButtons">
-                            <button type="button" id="emailLocation" onClick={handleEmailButtonClick}>Share Dropoff Location</button>
-                            <input onChange={event => setDropoffLocation(event.target.value)} type="text" id="dropoffLocation" name="dropoffLocation" placeholder="Dropoff Location"></input><br></br>
+                            <input onChange={event => setDropoffLocation(event.target.value)} type="text" id="dropoffLocation" name="dropoffLocation" placeholder="Enter Dropoff Location"></input><br></br>
+                            <button type="button" id={emailSent ? "location-sent" : "emailLocation"} onClick={emailSent ? nothing : handleEmailButtonClick}>{emailSent ? "Location sent!" : "Share Dropoff Location"}</button>
                         </div>
                     </div>
                     <div id="col2">

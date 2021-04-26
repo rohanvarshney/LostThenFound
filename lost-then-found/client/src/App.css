@@ -406,6 +406,18 @@
   margin-bottom: 2px;
 }
 
+#dropoffLocation {
+  margin-bottom: 5px;
+  margin-top: 5px;
+  width: 300px;
+  height: 40px;
+  border-radius: 12px;
+  border: none;
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: lightgray;
+}
+
 
 
 
@@ -451,9 +463,11 @@
   margin-bottom: 1%;
 }
 
-#contactButtons button {
+#emailLocation {
   margin-top: 10px;
-  border-radius: 5px;
+  border-radius: 10px;
+  width: 200px;
+  height: 50px;
   border: none;
   background-color: #33658A;
   color: white;
@@ -461,7 +475,31 @@
   padding-right: 10px;
 }
 
-#contactButtons button:hover {
+#location-sent {
+  margin-top: 10px;
+  border-radius: 10px;
+  width: 200px;
+  height: 50px;
+  border: none;
+  background-color: darkgray;
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#location-sent:hover {
+  margin-top: 10px;
+  border-radius: 10px;
+  width: 200px;
+  height: 50px;
+  border: none;
+  background-color: darkgray;
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#emailLocation:hover {
   background-color: #2f4858
 }
 
