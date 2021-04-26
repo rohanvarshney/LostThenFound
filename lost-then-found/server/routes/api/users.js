@@ -115,7 +115,7 @@ router.get('/:user_id', (req, res) => {
 
 
 // @route GET request to api/users/email/:user_id
-// @desc GET a user by user_id
+// @desc GET a user's email by user_id
 // How to use: call fetch("api/users/email/:user_id")
 router.get('/email/:user_id', (req, res) => {
   // the user id passed into the fetch call

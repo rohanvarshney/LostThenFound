@@ -39,10 +39,26 @@ const Details = (props) => {
     function handleEmailButtonClick(e) {
         e.preventDefault();
 
+        const userEmail = "";
+
+            const userRequest = {
+                method: 'GET'
+            };
+
+            fetch("api/users/email/" + props.who_created, userRequest)
+            .then(response => response.json())
+            .then(data => {
+              console.log('Success:', data);
+              userEmail = data;             // TODO: Make sure this is correct because I don't think it is
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+            });
+
         const formData = new FormData();
         formData.append('name', auth.user.name);
         formData.append('description', dropoffLocation);
-        formData.append('to', props.who_created);
+        formData.append('to', userEmail);
         formData.append('contactus', false);
 
         console.log("User Feedback Data: ");
