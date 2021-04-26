@@ -54,7 +54,7 @@ router.post('/', upload.fields([]), (req,res) => {
         } else {
             message = {
                 from: req.body.name + '<lostthenfoundproduct@gmail.com>',
-                to: to,                     
+                to: req.body.to,                     
                 subject: "A User on LostThenFound messaged you",
                 html: messageBody
             };

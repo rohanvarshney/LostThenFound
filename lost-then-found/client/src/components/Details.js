@@ -39,7 +39,7 @@ const Details = (props) => {
     function handleEmailButtonClick(e) {
         e.preventDefault();
 
-        const userEmail = "";
+        var userEmail = "";
 
             const userRequest = {
                 method: 'GET'
@@ -49,40 +49,42 @@ const Details = (props) => {
             .then(response => response.json())
             .then(data => {
               console.log('Success:', data);
-              userEmail = data;             // TODO: Make sure this is correct because I don't think it is
-            })
+              userEmail = data;      
+
+                const formData = new FormData();
+                
+                formData.append('name', auth.user.name);
+                formData.append('description', dropoffLocation);
+                formData.append('to', userEmail);
+                formData.append('contactus', false);
+
+                console.log("User Feedback Data: ");
+                for (var key of formData.entries()) {
+                    console.log(key[0] + ', ' + key[1]);
+                }
+
+                // create a POST request with formData as body
+                const postRequest = {
+                    method: 'POST',
+                    body: formData
+                };
+
+                // post to /api/emails route
+                fetch("/api/emails", postRequest)
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+
+                setEmailSent(true);       
+                })
             .catch((error) => {
               console.error('Error:', error);
             });
 
-        const formData = new FormData();
-        formData.append('name', auth.user.name);
-        formData.append('description', dropoffLocation);
-        formData.append('to', userEmail);
-        formData.append('contactus', false);
-
-        console.log("User Feedback Data: ");
-        for (var key of formData.entries()) {
-            console.log(key[0] + ', ' + key[1]);
-        }
-
-        // create a POST request with formData as body
-        const postRequest = {
-            method: 'POST',
-            body: formData
-        };
-
-        // post to /api/emails route
-        fetch("/api/emails", postRequest)
-        .then(response => response.json())
-        .then(data => {
-            console.log('Success:', data);
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
-
-        setEmailSent(true);
     };
 
     if (auth.isAuthenticated && auth.user.id == props.who_created) {
